@@ -1,7 +1,9 @@
 #files used locally that should not be uploaded to github
 noupload
-fonts
-css/fonts
+
+#Helvetica fonts not uploaded to github for licensing reasons
+Helvetica*
+helvetica*
 
 #files created by OS, etc.
 .DS_Store
