@@ -1,0 +1,259 @@
+
+@font-face {
+    font-family: 'helveticalight';
+    src: url('fonts/helveticaneuelight.eot');
+    src: url('fonts/helveticaneuelight.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helveticaneuelight.woff') format('woff'),
+         url('fonts/helveticaneuelight.ttf') format('truetype'),
+         url('fonts/helveticaneuelight.svg#helveticalight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helveticabold';
+    src: url('fonts/HelveticaNeue-Bold.eot');
+    src: url('fonts/HelveticaNeue-Bold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/HelveticaNeue-Bold.woff') format('woff'),
+         url('fonts/HelveticaNeue-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helveticastandard';
+    src: url('fonts/HelveticaNeue.eot');
+    src: url('fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype'),
+         url('fonts/HelveticaNeue.woff') format('woff'),
+         url('fonts/HelveticaNeue.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body, html {
+
+	padding: 0;
+	margin: 0;
+	
+}
+
+#global {
+
+	margin: 0;
+	padding: 0;
+	width: 1080px;
+	height: 1920px;
+	position: relative;
+	overflow: hidden;
+
+}
+
+* {
+	cursor: /*url(../img/blank_cursor.png),*/ default;
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+}
+
+input {
+	-webkit-user-select: text !important;
+}
+
+#base {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	width: 1080px;
+	height: 1920px;
+	overflow: hidden;
+
+}
+
+#base_bg {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1080px;
+	height: 1920px;
+	z-index: 1;
+	background: url(../img/bg2.png) no-repeat;
+
+}
+
+#base_blackbar {
+
+	z-index: 2000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1080px;
+	height: 50px;
+	background: url(../img/blackbar2.png) no-repeat;
+	
+}
+
+#base_toolbar {
+
+	height: 70px;
+	width: 1080px;
+	background: black;
+	position: absolute;
+	bottom: -100px;
+	left: 0;
+	z-index: 2000;
+	overflow: visible;
+
+}
+
+.base_toolbar_button {
+
+	width: 130px;
+	height: 130px;
+	background: rgb(23,46,94);
+	border-radius: 65px;
+	border: 0px none;
+	outline: 0px none;
+	color: white;
+	
+	padding: 0;
+	margin: 0;
+	
+	float: left;
+
+}
+
+.base_toolbar_button.on {
+
+	box-shadow: 0 0 100px #fff;
+
+}
+
+#base_back_button {
+
+	position: absolute;
+	top: -30px;
+	left: 30px;
+
+}
+
+#base_handicap_button {
+
+	position: absolute;
+	top: -30px;
+	right: 30px;
+
+}
+
+#base_back_button i {
+
+	font-size: 6em;
+	position: relative;
+	bottom: 9px;
+	right: 2px;
+
+}
+
+#base_handicap_button img {
+
+	width: 70px;
+	height: 70px;
+	position: relative;
+	left: 6px;
+	bottom: 8px;
+	margin: 0;
+
+}
+
+#base_clock {
+
+	width: 700px;
+	height: 70px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -350px;
+	text-align: center;
+	color: white;
+	z-index: 4;
+	line-height: 70px;
+	letter-spacing: 1.1px;
+	font-family: 'helveticalight';
+	text-transform: uppercase;
+	font-size: 28pt;
+
+}
+
+#base_handicap_disable_button {
+
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	width: 500px;
+	margin-left: -250px;
+	z-index: 2000;
+	background: rgb(23,46,94);
+	border-radius: 15px;
+	color: white;
+	font-family: 'helveticalight';
+	font-size: 15pt;
+	text-align: center;
+	border: 0px none;
+	outline: none;
+	letter-spacing: 2px;
+	font-weight: bold;
+	display: none;
+
+}
+
+#base_handicap_disable_button span {
+
+	display: block;
+	font-size: 24pt;
+	margin-top: 5px;
+
+}
+
+.handicap #base_handicap_disable_button {
+	display: block;
+}
+
+.cover_anim #base_toolbar {
+	bottom: 0px;
+	-webkit-transition: bottom 0.5s;
+}
+.page0 #base_toolbar {
+	bottom: -100px;
+	-webkit-transition: bottom 0.5s;
+}
+
+.data_error {
+
+	font-family: 'helveticalight';
+	font-weight: bold;
+	letter-spacing: 1px;
+	color: white;
+	font-size: 20pt;
+	margin-top: 25px;
+
+}
+
+#directory_content > div .data_error { color: black; }
+
+#unsupported {
+
+	z-index: 65533;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1080px;
+	height: 1920px;
+	user-select: none;
+	cursor: default;
+	margin: 0;
+	padding: 0;
+	background: #000 url(../img/unsupported.png) no-repeat;
+	
+}

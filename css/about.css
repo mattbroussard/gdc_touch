@@ -1,0 +1,63 @@
+
+#about {
+
+	position: absolute;
+	top: 0;
+	left: 1080px;
+	margin: 0;
+	padding: 0;
+	width: 1080px;
+	height: 1920px;
+	overflow: hidden;
+	z-index: 20;
+
+}
+
+#about_title {
+
+	position: absolute;
+	top: 70px;
+	left: 20px;
+
+}
+
+#about_content {
+
+	z-index: 21;
+	position: absolute;
+	top: 170px;
+	left: 20px;
+	width: 1040px;
+	height: 1630px;
+	font-family: 'helveticalight';
+	font-size: 16pt;
+	color: white;
+	font-weight: bold;
+	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)), color-stop(0.9,rgba(0,0,0,1)));
+
+}
+
+#about_content > div {
+
+	padding-bottom: 20px;
+
+}
+
+.handicap #about_title { top: 1080px; }
+
+.handicap #about_content {
+
+	top: 1180px;
+	height: 620px;
+
+}
+
+.page_about #about {
+	left: 0;
+	-webkit-transition: left 0.5s;
+}
+
+.page1 #about {
+	left: 1080px;
+	-webkit-transition: left 0.5s;
+}
