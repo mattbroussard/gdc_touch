@@ -2,6 +2,22 @@
 var directoryScroller = null;
 var directoryFilterType = "all";
 var directoryLastQuery = "";
+var directoryDatabase = null;
+
+function directoryDataForRoom(room) {
+
+	if (directoryDatabase==null) return null;
+	
+	for (var i in directoryDatabase) {
+		var row = directoryDatabase[i];
+		if (row.location && row.location.indexOf(room)>=0) {
+			return row;
+		}
+	}
+	
+	return null;
+
+}
 
 function formatPhone(p) {
 
@@ -114,6 +130,7 @@ function directoryContentLoaded(data, textStatus, jqXHR) {
 
 	if (data.error) return;
 	$("#directory_content > div .data_error").remove();
+	directoryDatabase = data;
 	
 	var jumplist = $("<div>").attr("id", "directory_jumplist").appendTo("#directory_content > div");
 	for (var i = 0; i < 26; i++) {

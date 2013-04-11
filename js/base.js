@@ -5,7 +5,7 @@ var lastMouseEvent = -1;
 
 var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-var pageClasses = ["page_about", "page_directory", "page_rooms", "page_news_full"];
+var pageClasses = ["page_about", "page_directory", "page_rooms", "page_news_full", "page_map"];
 
 function baseClockUpdate() {
 	
@@ -91,6 +91,7 @@ function toggleHandicap() {
 		directoryScroller.refresh();
 		roomsScroller.refresh();
 		aboutScroller.refresh();
+		mapScroller.refresh();
 		$("#news_full iframe")[0].contentWindow.fixScroll();
 	}, 0);
 

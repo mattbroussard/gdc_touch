@@ -1,0 +1,177 @@
+
+#map {
+
+	position: absolute;
+	top: 0;
+	left: 1080px;
+	margin: 0;
+	padding: 0;
+	width: 1080px;
+	height: 1920px;
+	overflow: hidden;
+	z-index: 20;
+
+}
+
+#map_title {
+
+	position: absolute;
+	top: 70px;
+	left: 20px;
+
+}
+
+#map_container {
+
+	position: absolute;
+	top: 170px;
+	left: 20px;
+	width: 625px;
+	height: 1630px;
+	
+
+}
+
+#map_container > div { position: relative; }
+
+.map_label {
+
+	position: absolute;
+	color: white;
+	text-align: center;
+	font-size: 20pt;
+	font-family: 'helveticalight';
+
+}
+
+#map_floor_chooser {
+
+	position: absolute;
+	top: 170px;
+	left: 965px; /*665px;*/
+	width: 75px;
+	box-shadow: 0 0 35px #333;
+
+}
+
+#map_floor_chooser button {
+
+	display: block;
+	border: 0;
+	outline: 0;
+	margin: 0;
+	width: 100%;
+	font-family: 'helveticastandard';
+	font-size: 20pt;
+	font-weight: bold;
+	height: 2.5em;
+	background: white;
+	color: rgb(23,46,94);
+
+}
+
+#map_floor_chooser button.on {
+
+	background-color: rgb(23,46,94);
+	color: white;
+
+}
+
+#map_wing_chooser {
+
+	width: 312px;
+	height: 464px;
+	background-image: url(../img/wing_chooser.png);
+	position: absolute;
+	top: 170px;
+	left: 650px; /*760px;*/
+	background-position: 0 0;
+
+}
+
+#map_wing_chooser.ne { background-position: 0 0; }
+#map_wing_chooser.nw { background-position: -312px 0; }
+#map_wing_chooser.s { background-position: -624px 0; }
+
+#map_popup {
+
+	position: absolute;
+	width: 400px;
+	background: white;
+	border-radius: 15px;
+	padding: 15px;
+	text-align: center;
+	font-family: 'helveticalight';
+	letter-spacing: 1px;
+	border: 3px solid #000;
+	display: none;
+
+}
+
+#map_popup_title {
+	font-size: 40pt;
+	font-family: 'helveticastandard';
+}
+
+#map_popup_subtitle {
+	font-size: 22pt;
+}
+
+#map_popup_phone {
+	font-size: 16pt;
+}
+
+#map_popup button {
+
+	background-color: rgb(23,46,94);
+	color: white;
+	border: 0;
+	outline: 0;
+	font-family: 'helveticalight';
+	font-size: 20pt;
+	letter-spacing: 1px;
+	border-radius: 20px;
+	padding: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-top: 15px;
+
+}
+
+#map_popup:after, #map_popup:before {
+
+	content: ' ';
+	height: 0;
+	position: absolute;
+	width: 0;
+	border: 15px solid transparent;
+	border-top-color: #fff;
+	top: 100%;
+	left: 50px;
+
+}
+
+#map_popup:before {
+	border: 20px solid transparent;
+	left: 45px;
+	border-top-color: #000;
+}
+
+.handicap #map_container {
+
+	top: 1180px;
+	height: 620px;
+
+}
+
+.handicap #map_title { top: 1080px; }
+
+.page_map #map {
+	left: 0;
+	-webkit-transition: left 0.5s;
+}
+
+.page1 #map {
+	left: 1080px;
+	-webkit-transition: left 0.5s;
+}
