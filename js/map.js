@@ -51,7 +51,7 @@ function mapPopup(room, $elem) {
 		else if (rec.lName) name = rec.fName+" "+rec.lName;
 		else if (rec.title) name = rec.title;
 		else if (rec.name) name = rec.name;
-		if (phone!="" && rec.phone) phone = rec.phone;
+		if (rec.phone && phone=="") phone = formatPhone(rec.phone);
 	}
 	
 	$("#map_popup_title").text("GDC " + room);
