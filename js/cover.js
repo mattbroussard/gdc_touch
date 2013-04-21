@@ -40,8 +40,7 @@ $(function() {
 	$("#cover").click(coverTouch);
 	
 	var loc = window.location.href.split("?location=");
-	if (loc.length>=2) coverLocation = loc[1];
-	coverFloorNumber = coverLocation.replace(/[^0-9\-]/g, "") / 1; //added a hyphen in the regex because Ryan wanted to see it say -1
+	if (loc.length>=2) coverLocation = loc[1];	coverFloorNumber = coverLocation.replace(/[^0-9\-]/g, "") / 1; //added a hyphen in the regex because Ryan wanted to see it say -1
 	$("#cover_floor").text(coverFloorNumber);
 	
 	coverSlideInterval = setInterval(coverSlideUpdate, 12000);

@@ -5,6 +5,9 @@ noupload
 Helvetica*
 helvetica*
 
+#map images not uploaded to github for security reasons
+img/maps/*
+
 #files created by OS, etc.
 .DS_Store
 .DS_Store?

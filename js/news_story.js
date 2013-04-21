@@ -25,7 +25,7 @@ function load(url) {
 	$("body").removeClass("done_loading");
 	$("body > div > div *").remove();
 	fixScroll();
-	$("body > div > div").load("news_story.php?proxy=1&url="+url+" h1.title, #content-area div.node:first", loadingDone);
+	$("body > div > div").load("../php/news_story.php?url="+url+" h1.title, #content-area div.node:first", loadingDone);
 
 }
 

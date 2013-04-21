@@ -84,6 +84,9 @@ function mapUpdateView() {
 
 function populateMap(loc) {
 
+	//disable this function for the moment
+	if (true) return;
+	
 	var rooms = mapData[loc];
 	var adj = mapAdjustments[loc];
 	

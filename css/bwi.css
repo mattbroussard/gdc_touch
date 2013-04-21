@@ -1,0 +1,57 @@
+
+#bwi {
+
+	position: absolute;
+	top: 0;
+	left: 1080px;
+	margin: 0;
+	padding: 0;
+	width: 1080px;
+	height: 1920px;
+	overflow: hidden;
+	z-index: 20;
+
+}
+
+#bwi_title {
+
+	position: absolute;
+	top: 70px;
+	left: 20px;
+
+}
+
+/* big red demo button */
+#bwi button {
+
+	border: 10px solid #fff;
+	outline: 0;
+	width: 500px;
+	height: 500px;
+	border-radius: 250px;
+	background: red;
+	color: white;
+	font-size: 56pt;
+	text-align: center;
+	font-family: 'helveticalight';
+	letter-spacing: 1px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -250px;
+	margin-left: -250px;
+	box-shadow: 0 0 200px #333;
+	padding: 50px;
+
+}
+#bwi button.on { box-shadow: 0 0 200px #fff; }
+
+.page_bwi #bwi {
+	left: 0;
+	-webkit-transition: left 0.5s;
+}
+
+.page1 #bwi {
+	left: 1080px;
+	-webkit-transition: left 0.5s;
+}

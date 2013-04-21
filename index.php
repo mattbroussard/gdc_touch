@@ -1,5 +1,5 @@
 <?php
-	$modules = array("base", "cover", "menu", "about", "directory", "rooms", "map");
+	$modules = array("base", "cover", "menu", "about", "directory", "rooms", /*"stupid_map",*/ "bwi");
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/iscroll.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
 <?php $t = time(); foreach ($modules as $i) { ?>
 	<!-- CSS/JS includes for module <?php echo $i; ?> -->
 	<link rel="stylesheet" type="text/css" href="css/<?php echo $i; ?>.css?cachebuster=<?php echo $t; ?>" />

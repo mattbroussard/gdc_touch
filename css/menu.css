@@ -37,15 +37,21 @@
 	display: inline-block;
 	
 	margin: 40px;
-	
-	/* remove when there are two rows of menu buttons again */
-	/* margin-top: 230px; */
 
 }
+
+#menu_buttons.onerow .menu_button { margin-top: 230px; }
+.handicap #menu_buttons.onerow .menu_button { margin-top: 15px; }
 
 .menu_button.on {
 
 	box-shadow: 0 0 100px #fff;
+
+}
+
+.menu_button.off {
+
+	display: none;
 
 }
 

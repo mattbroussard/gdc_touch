@@ -217,7 +217,7 @@ function resetDirectory() {
 
 function directoryLoadContent() {
 
-	$.getJSON("php/directory.php", directoryContentLoaded);
+	$.getJSON(config_dataSources["directory"], directoryContentLoaded);
 
 }
 
@@ -282,6 +282,7 @@ function directoryTabClick() {
 
 $(function() {
 
+	enableMenuButton("directory");
 	buildKeyboard();
 	directoryLoadContent();
 	directoryScroller = new iScroll("directory_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none" });

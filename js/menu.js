@@ -22,8 +22,23 @@ function scrollSafeClick(el, handler) {
 
 }
 
+function enableMenuButton(pageName) {
+
+	$("#menu_"+pageName+"_button").removeClass("off");
+	$("#menu_buttons > br").remove();
+	$("#menu_buttons").removeClass("onerow");
+	
+	var count = $(".menu_button:not(.off)").length;
+	
+	if (count <= 3) $("#menu_buttons").addClass("onerow");
+	if (count==4) $("<br>").insertAfter(".menu_button:visible:eq(1)");
+
+}
+
 function launchNewsFull() {
 
+	//if (true) return; //temporarily disable full news story view
+	
 	if (menuNewsScroller.animating || menuNewsScroller.moved) return;
 	
 	$("#news_full iframe")[0].contentWindow.load($(this).attr("data-source"));
@@ -112,8 +127,8 @@ function menuEventsLoaded(data, textStatus, jqXHR) {
 
 function menuLoadContent() {
 
-	$.getJSON("php/news.php", menuNewsLoaded);
-	$.getJSON("php/events.php", menuEventsLoaded);
+	$.getJSON(config_dataSources["news"], menuNewsLoaded);
+	$.getJSON(config_dataSources["events"], menuEventsLoaded);
 
 }
 

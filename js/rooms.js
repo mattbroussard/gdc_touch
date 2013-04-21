@@ -28,7 +28,9 @@ function roomsContentLoaded(data, textStatus, jqXHR) {
 
 $(function() {
 
+	enableMenuButton("rooms");
+	
 	roomsScroller = new iScroll("rooms_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none" });
-	$.getJSON("php/rooms.php", roomsContentLoaded);
+	$.getJSON(config_dataSources["rooms"], roomsContentLoaded);
 
 });

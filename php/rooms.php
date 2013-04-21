@@ -1,7 +1,5 @@
 <?php
 
-	//shoot me now.
-	
 	function err($errno, $errstr, $errfile, $errline) {
 		if (strstr($errstr, "Unexpected end tag")) return true;
 		if ($errno == E_WARNING) return true;
