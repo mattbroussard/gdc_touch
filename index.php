@@ -1,5 +1,5 @@
 <?php
-	$modules = array("base", "cover", "menu", "about", "directory", "rooms", /*"stupid_map",*/ "bwi");
+	$modules = array("base", "cover", "menu", "about", "directory", "rooms", /*"stupid_map",*/ "bwi", "research");
 ?><!DOCTYPE html>
 <html>
 <head>

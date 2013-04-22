@@ -5,7 +5,7 @@ var lastMouseEvent = -1;
 
 var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-var pageClasses = ["page_about", "page_directory", "page_rooms", "page_news_full", "page_map", "page_bwi"];
+var pageClasses = ["page_about", "page_directory", "page_rooms", "page_news_full", "page_map", "page_bwi", "page_research"];
 
 function baseClockUpdate() {
 	
@@ -49,7 +49,11 @@ function reset() {
 function baseBackButton() {
 
 	if ($("body").hasClass("page1")) reset();
-	else {
+	else if ($("body").hasClass("page3")) {
+	
+		$("body").addClass("page2").removeClass("page3");
+		
+	} else {
 	
 		if ($("body").hasClass("page_directory")) resetDirectory();
 		

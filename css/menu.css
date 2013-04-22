@@ -287,7 +287,7 @@
 
 }
 
-.page2 #menu {
+.page2 #menu, .page_research.page3 #menu {
 
 	left: -1080px;
 	-webkit-transition: left 0.5s;
