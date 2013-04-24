@@ -103,7 +103,7 @@ input {
 	position: absolute;
 	bottom: -100px;
 	left: 0;
-	z-index: 2000;
+	z-index: 1998;
 	overflow: visible;
 
 }

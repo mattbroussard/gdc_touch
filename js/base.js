@@ -7,6 +7,19 @@ var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
 var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
 var pageClasses = ["page_about", "page_directory", "page_rooms", "page_news_full", "page_map", "page_bwi", "page_research"];
 
+function baseGetLocation() {
+
+	var loc = window.location.href.split("?location=");
+	return loc.length >= 2 ? loc[1] : "0";
+
+}
+
+function baseGetFloorNumber() {
+
+	return baseGetLocation().replace(/[^0-9\-]/g, "") / 1; //added a hyphen in the regex because Ryan wanted to see it say -1
+
+}
+
 function baseClockUpdate() {
 	
 	var date = new Date();

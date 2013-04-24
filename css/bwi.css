@@ -55,3 +55,51 @@
 	left: 1080px;
 	-webkit-transition: left 0.5s;
 }
+
+#bwi_message_screen {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	width: 1080px;
+	height: 1920px;
+	overflow: hidden;
+	z-index: 1999;
+	background: url(../img/bg2.png) no-repeat;
+	text-align: center;
+	color: white;
+	display: none;
+
+}
+
+#bwi_message_screen i {
+
+	font-size: 700pt;
+	display: block;
+	margin-top: 300px;
+
+}
+
+#bwi_message_screen button {
+
+	position: absolute;
+	bottom: 100px;
+	left: 50%;
+	width: 500px;
+	margin-left: -250px;
+	z-index: 2000;
+	background: rgb(23,46,94);
+	border-radius: 15px;
+	color: white;
+	font-family: 'helveticalight';
+	font-size: 24pt;
+	text-align: center;
+	border: 0px none;
+	outline: none;
+	letter-spacing: 2px;
+	font-weight: bold;
+	padding: 25px;
+
+}

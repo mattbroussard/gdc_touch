@@ -22,9 +22,13 @@ function scrollSafeClick(el, handler) {
 
 }
 
-function enableMenuButton(pageName) {
+function updateMenuButtonState(pageName, state) {
 
-	$("#menu_"+pageName+"_button").removeClass("off");
+	var button = $("#menu_"+pageName+"_button");
+	
+	if (state) button.removeClass("off");
+	else button.addClass("off");
+	
 	$("#menu_buttons > br").remove();
 	$("#menu_buttons").removeClass("onerow");
 	
@@ -34,6 +38,9 @@ function enableMenuButton(pageName) {
 	if (count==4) $("<br>").insertAfter(".menu_button:visible:eq(1)");
 
 }
+
+function enableMenuButton(pageName) { updateMenuButtonState(pageName, true); }
+function disableMenuButton(pageName) { updateMenuButtonState(pageName, false); }
 
 function launchNewsFull() {
 

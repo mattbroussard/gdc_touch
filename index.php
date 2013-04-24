@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/iscroll.js"></script>
+	<script type="text/javascript" src="js/myros.js"></script>
 	<script type="text/javascript" src="js/config.js"></script>
 <?php $t = time(); foreach ($modules as $i) { ?>
 	<!-- CSS/JS includes for module <?php echo $i; ?> -->
