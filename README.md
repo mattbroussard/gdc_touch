@@ -17,3 +17,4 @@ Open source code from jQuery, iScroll, Font Awesome, and ROSjs libraries are inc
 # Project Status
 
 In the fall, Robert and Matt will both be taking the CS378 course and will continue improving this application while working on other projects. Negotiating the deployment of a milestone version of the application on the screens is currently in progress.
+ 
