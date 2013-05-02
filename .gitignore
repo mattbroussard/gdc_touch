@@ -4,7 +4,7 @@ noupload
 #fonts not uploaded to github for licensing reasons
 Helvetica*
 helvetica*
-Gotham-
+Gotham-*
 
 #map images not uploaded to github for security reasons
 img/maps/*
