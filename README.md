@@ -12,7 +12,7 @@ Open source code from jQuery, iScroll, Font Awesome, and ROSjs libraries are inc
 - Not included here for licensing reasons are several font files (Gotham; previously Helvetica Neue) that are needed for the application to display correctly.
 - Not included here for security reasons are map images.
 - If you need the aforementioned missing files to run the application, let us know in person.
-- For ROS communications to work, you must run rosbridge on farnsworth. Messages are sent and received on topic /gdc_touch. This feature is a work in progress and the format has not been fully specified.- For ROS communcations to work, you must run rosbridge on farnsworth. Messages are sent and received on topic /gdc_touch. This feature is a work in progress and the message format has not been fully specified yet (tentatively JSON strings).
+- For ROS communcations to work, you must run rosbridge on farnsworth. Messages are sent and received on topic /gdc_touch. This feature is a work in progress and the message format has not been fully specified yet (tentatively JSON strings).
 
 # Project Status
 
