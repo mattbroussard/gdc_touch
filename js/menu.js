@@ -136,6 +136,9 @@ function menuLoadContent() {
 
 	$.getJSON(config_dataSources["news"], menuNewsLoaded);
 	$.getJSON(config_dataSources["events"], menuEventsLoaded);
+	
+	if (config_dataSources["news_slideshow"] != null)
+		$.getJSON(config_dataSources["news_slideshow"], menuSlideshowLoaded);
 
 }
 
@@ -144,6 +147,63 @@ function menuPushSlideshow() {
 	if (menuSlideshowLastScroll>0 && (new Date().getTime()-menuSlideshowLastScroll)<3000) return;
 	
 	menuSlideshowScroller.scrollToPage(menuSlideshowScroller.currPageX+1, 0, 400);
+
+}
+
+function menuSlideshowReset() {
+
+	if (menuSlideshowScroller) {
+		menuSlideshowLastScroll = -1;
+		menuSlideshowScroller.scrollToPage(1, 0, 0);
+	}
+
+}
+
+function menuSlideshowLoaded(data) {
+
+	if (data.error || data.length <= 1) return;
+	$("body").removeClass("menu_noSlideshow");
+
+	for (var i in data) {
+		$("<img>").attr("src", data[i]).appendTo("#menu_news_slideshow > div");
+	}
+	
+	menuInitSlideshow();
+	baseRefreshScrollers();
+
+}
+
+function menuInitSlideshow() {
+
+	$("#menu_news_slideshow div img:last").clone().prependTo("#menu_news_slideshow div");
+	$("#menu_news_slideshow div img:nth-child(2)").clone().appendTo("#menu_news_slideshow div");
+	var menuSlideshowScrollerN = $("#menu_news_slideshow div img").length;
+	$("#menu_news_slideshow div").css("width", (600*menuSlideshowScrollerN)+"px");
+	
+	menuSlideshowScroller = new iScroll("menu_news_slideshow", {
+		hScrollbar: false,
+		vScrollbar: false,
+		snap: true,
+		momentum: false,
+		wheelAction: "none",
+		onScrollEnd: function() {
+			if (this.currPageX==0) {
+				this.scrollToPage(menuSlideshowScrollerN-2, 0, 0);
+			} else if (this.currPageX==menuSlideshowScrollerN-1) {
+				this.scrollToPage(1, 0, 0);
+			} else {
+				$("#menu_news_slideshow span i.icon-circle").remove().insertAfter("#menu_news_slideshow span i:nth-child("+this.currPageX+")");
+				menuSlideshowLastScroll = new Date().getTime();
+			}
+		}
+	});
+	menuSlideshowScroller.scrollToPage(1, 0, 0);
+	menuSlideshowScrollerInterval = setInterval(menuPushSlideshow, 5000);
+	
+	$("<i>").css("display", "none").appendTo("#menu_news_slideshow span");
+	for (var i = 0; i < menuSlideshowScrollerN-2; i++) {
+		$("<i>").addClass(i==0?"icon-circle":"icon-circle-blank").appendTo("#menu_news_slideshow span");
+	}
 
 }
 
@@ -157,38 +217,10 @@ $(function() {
 		$(this).removeClass("on");
 	});
 	
-	$("#menu_news_slideshow div img:last").clone().prependTo("#menu_news_slideshow div");
-	$("#menu_news_slideshow div img:nth-child(2)").clone().appendTo("#menu_news_slideshow div");
-	var menuSlideshowScrollerN = $("#menu_news_slideshow div img").length;
-	$("#menu_news_slideshow div").css("width", (600*menuSlideshowScrollerN)+"px");
-	menuSlideshowScroller = new iScroll("menu_news_slideshow", {
-															 hScrollbar: false,
-															 vScrollbar: false,
-															 snap: true,
-															 momentum: false,
-															 wheelAction: "none",
-															 onScrollEnd: function() {
-															 	if (this.currPageX==0) {
-															 		this.scrollToPage(menuSlideshowScrollerN-2, 0, 0);
-															 	} else if (this.currPageX==menuSlideshowScrollerN-1) {
-															 		this.scrollToPage(1, 0, 0);
-															 	} else {
-															 		$("#menu_news_slideshow span i.icon-circle").remove().insertAfter("#menu_news_slideshow span i:nth-child("+this.currPageX+")");
-															 		menuSlideshowLastScroll = new Date().getTime();
-															 	}
-															 }
-														   });
-	menuSlideshowScroller.scrollToPage(1, 0, 0);
-	menuSlideshowScrollerInterval = setInterval(menuPushSlideshow, 5000);
-	
-	$("<i>").css("display", "none").appendTo("#menu_news_slideshow span");
-	for (var i = 0; i < menuSlideshowScrollerN-2; i++) {
-		$("<i>").addClass(i==0?"icon-circle":"icon-circle-blank").appendTo("#menu_news_slideshow span");
-	}
-	
 	menuNewsScroller = new iScroll("menu_news_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none" });
 	menuEventsScroller = new iScroll("menu_events_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none" });
 	
+	$("body").addClass("menu_noSlideshow");
 	menuLoadContent();
 	
 	$(".menu_button").click(function() {

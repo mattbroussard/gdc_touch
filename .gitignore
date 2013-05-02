@@ -1,9 +1,10 @@
 #files used locally that should not be uploaded to github
 noupload
 
-#Helvetica fonts not uploaded to github for licensing reasons
+#fonts not uploaded to github for licensing reasons
 Helvetica*
 helvetica*
+Gotham-
 
 #map images not uploaded to github for security reasons
 img/maps/*

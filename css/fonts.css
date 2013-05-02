@@ -1,0 +1,57 @@
+
+/* These are a lie since we call them Helvetica but they're Gotham.
+   This way we don't have to change references to them everywhere. */
+
+@font-face {
+	font-family: 'helveticalight';
+	src: url('fonts/Gotham-Thin.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'helveticabold';
+	src: url('fonts/Gotham-Bold.ttf');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'helveticastandard';
+	src: url('fonts/Gotham-Book.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* old version using Helvetica */
+
+/* @font-face {
+    font-family: 'helveticalight';
+    src: url('fonts/helveticaneuelight.eot');
+    src: url('fonts/helveticaneuelight.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helveticaneuelight.woff') format('woff'),
+         url('fonts/helveticaneuelight.ttf') format('truetype'),
+         url('fonts/helveticaneuelight.svg#helveticalight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helveticabold';
+    src: url('fonts/HelveticaNeue-Bold.eot');
+    src: url('fonts/HelveticaNeue-Bold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/HelveticaNeue-Bold.woff') format('woff'),
+         url('fonts/HelveticaNeue-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helveticastandard';
+    src: url('fonts/HelveticaNeue.eot');
+    src: url('fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype'),
+         url('fonts/HelveticaNeue.woff') format('woff'),
+         url('fonts/HelveticaNeue.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+} */

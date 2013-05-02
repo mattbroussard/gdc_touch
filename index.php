@@ -9,6 +9,7 @@
 	<meta name="robots" content="noindex,nofollow" />
 	<!-- global CSS/JS includes -->
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/fonts.css" />
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/iscroll.js"></script>
 	<script type="text/javascript" src="js/myros.js"></script>

@@ -98,19 +98,37 @@ function baseMouseEvent() {
 
 }
 
+function baseRefreshScrollers() {
+
+	setTimeout(function() {
+	
+		var scrollers = [
+			"menuNewsScroller",
+			"menuEventsScroller",
+			"directoryScroller",
+			"roomsScroller",
+			"aboutScroller",
+			"mapScroller",
+			"researchMenuScroller"
+		];
+		
+		for (var i in scrollers) {
+			if (window[scrollers[i]] && window[scrollers[i]].refresh) {
+				window[scrollers[i]].refresh();
+			}
+		}
+		
+		$("#news_full iframe")[0].contentWindow.fixScroll();
+	
+	}, 0);
+
+}
+
 function toggleHandicap() {
 
 	$("body").toggleClass("handicap");
 	if ($("body").hasClass("handcap")) resetDirectory();
-	setTimeout(function() {
-		menuNewsScroller.refresh();
-		menuEventsScroller.refresh();
-		directoryScroller.refresh();
-		roomsScroller.refresh();
-		aboutScroller.refresh();
-		mapScroller.refresh();
-		$("#news_full iframe")[0].contentWindow.fixScroll();
-	}, 0);
+	baseRefreshScrollers();
 
 }
 

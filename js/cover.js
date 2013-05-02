@@ -2,14 +2,12 @@
 var coverSlideState = 1;
 var coverSlideInterval = null;
 
-//clock updating moved to base.js
-
 function coverSlideUpdate() {
 
 	var duration = 3000;
 	
 	coverSlideState++;
-	if (coverSlideState>5) coverSlideState = 1;
+	if (coverSlideState > config_coverSlideshow.length) coverSlideState = 1;
 	
 	if (coverSlideState!=1) {
 		$("#cover_slide"+coverSlideState).show().addClass("on");
@@ -20,8 +18,7 @@ function coverSlideUpdate() {
 
 function coverTouch() {
 
-	menuSlideshowLastScroll = -1;
-	menuSlideshowScroller.scrollToPage(1, 0, 0);
+	menuSlideshowReset();
 	
 	$("body")
 		.removeClass("handicap")
@@ -31,14 +28,27 @@ function coverTouch() {
 
 }
 
-$(function() {
+function coverInitSlideshow() {
 
-	var animOn = true;
+	for (var i = 1; i <= config_coverSlideshow.length; i++) {
 	
-	$("#cover").click(coverTouch);
+		$("<img>")
+			.attr("src", config_coverSlideshow[i-1])
+			.addClass("cover_slide")
+			.attr("id", "cover_slide"+i)
+			.css("z-index", 1011+config_coverSlideshow.length-i)
+			.appendTo("#cover_slideshow");
 	
-	$("#cover_floor").text(baseGetFloorNumber());
+	}
 	
 	coverSlideInterval = setInterval(coverSlideUpdate, 12000);
+
+}
+
+$(function() {
+
+	$("#cover").click(coverTouch);
+	$("#cover_floor").text(baseGetFloorNumber());
+	coverInitSlideshow();
 
 });

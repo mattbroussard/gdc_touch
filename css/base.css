@@ -1,34 +1,5 @@
 
-@font-face {
-    font-family: 'helveticalight';
-    src: url('fonts/helveticaneuelight.eot');
-    src: url('fonts/helveticaneuelight.eot?#iefix') format('embedded-opentype'),
-         url('fonts/helveticaneuelight.woff') format('woff'),
-         url('fonts/helveticaneuelight.ttf') format('truetype'),
-         url('fonts/helveticaneuelight.svg#helveticalight') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'helveticabold';
-    src: url('fonts/HelveticaNeue-Bold.eot');
-    src: url('fonts/HelveticaNeue-Bold.eot?#iefix') format('embedded-opentype'),
-         url('fonts/HelveticaNeue-Bold.woff') format('woff'),
-         url('fonts/HelveticaNeue-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'helveticastandard';
-    src: url('fonts/HelveticaNeue.eot');
-    src: url('fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype'),
-         url('fonts/HelveticaNeue.woff') format('woff'),
-         url('fonts/HelveticaNeue.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
+/* font imports moved to fonts.css */
 
 body, html {
 
@@ -79,7 +50,7 @@ input {
 	width: 1080px;
 	height: 1920px;
 	z-index: 1;
-	background: url(../img/bg2.png) no-repeat;
+	background: url(../img/bg3.png) no-repeat;
 
 }
 
@@ -91,7 +62,7 @@ input {
 	left: 0;
 	width: 1080px;
 	height: 50px;
-	background: url(../img/blackbar2.png) no-repeat;
+	background: url(../img/blackbar3.png) no-repeat;
 	
 }
 

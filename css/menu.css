@@ -131,6 +131,7 @@
 
 #menu_news_slideshow {
 
+	margin-bottom: 15px;
 	width: 600px;
 	height: 400px;
 	overflow: hidden;
@@ -139,6 +140,9 @@
 	position: relative;
 
 }
+
+.menu_noSlideshow #menu_news_slideshow { display: none; }
+.menu_noSlideshow #menu_news_content { height: 1000px; }
 
 #menu_news_slideshow span {
 
@@ -176,14 +180,15 @@
 
 #menu_news_content {
 
-	margin-top: 15px;
+	/* margin-top: 15px; */
 	height: 585px;
 	overflow: hidden;
 	color: white;
 	font-family: 'helveticalight';
 	font-size: 14pt;
 	font-weight: bold;
-	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0)), color-stop(0.05,rgba(0,0,0,1)), color-stop(0.9,rgba(0,0,0,1)));
+	/* -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0)), color-stop(0.05,rgba(0,0,0,1)), color-stop(0.9,rgba(0,0,0,1))); */
+	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)), color-stop(0.9,rgba(0,0,0,1)));
 
 }
 
@@ -236,6 +241,8 @@
 	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)), color-stop(0.9,rgba(0,0,0,1)));
 
 }
+
+.menu_noSlideshow #menu_events_content > div { padding-top: 17px; }
 
 #menu_events_content > div {
 

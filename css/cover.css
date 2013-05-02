@@ -15,12 +15,14 @@
 
 #cover_touchAnywhere {
 
-	width: 479px;
-	height: 304px;
+	/* width: 479px;
+	height: 304px; */
+	width: 546px;
+	height: 299px;
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	background: url(../img/touch_anywhere.png) no-repeat;
+	background: url(../img/touch_anywhere2.png) no-repeat;
 	z-index: 2;
 
 }
@@ -91,7 +93,9 @@
 	-webkit-transform: rotateZ(45deg);
 	overflow: hidden;
 	
-	background: url(../img/cover_title1.png) no-repeat;
+	background-color: #172e5e;
+	background-image: url(../img/cover_title2.png);
+	background-repeat: no-repeat;
 
 }
 
@@ -106,10 +110,12 @@
 	overflow: hidden;
 	-webkit-transform-origin: 0 0;
 	-webkit-transform: rotateZ(45deg);
+	
+	background-color: #172e5e;
 
 }
 
-#cover_cover_slideshow {
+#cover_slideshow {
 
 	position: absolute;
 	overflow: hidden;
@@ -131,12 +137,6 @@
 
 }
 
-#cover_slide1 { z-index: 1015; }
-#cover_slide2 { z-index: 1014; }
-#cover_slide3 { z-index: 1013; }
-#cover_slide4 { z-index: 1012; }
-#cover_slide5 { z-index: 1011; }
-
 #cover_clock { display: none !important; }
 #cover_location {
 
@@ -147,15 +147,18 @@
 	font-family: 'helveticalight';
 	text-align: center;
 	text-shadow: 5px 5px 15px #333;
-	width: 300px;
+	min-width: 300px;
 
 }
 
 #cover_location label {
 
 	font-size: 44pt;
+	font-family: 'helveticastandard';
 	font-weight: bold;
-	letter-spacing: 4px;
+	letter-spacing: 2px;
+	display: block;
+	margin-bottom: 25px;
 
 }
 
@@ -210,7 +213,7 @@
 }
 
 .cover_anim #cover_touchAnywhere {
-	right: -479px;
+	right: -546px; /*-479px;*/
 	-webkit-transition: right 0.5s;
 }
 .page0 #cover_touchAnywhere {
