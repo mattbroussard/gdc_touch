@@ -26,13 +26,19 @@
 	position: absolute;
 	top: 195px; /* old masthead: 170px */
 	left: 20px;
-	width: 625px;
+	width: 920px;
 	height: 1605px; /* old masthead: 1630px */
 	
-
 }
 
 #map_container > div { position: relative; }
+
+#map_container > div > img {
+
+	background-color: #fff; /* give white backgrounds to the transparent map images */
+	box-shadow: 0 0 35px #333;
+
+}
 
 .map_label {
 
@@ -76,22 +82,6 @@
 	color: white;
 
 }
-
-#map_wing_chooser {
-
-	width: 312px;
-	height: 464px;
-	background-image: url(../img/wing_chooser.png);
-	position: absolute;
-	top: 195px; /* old masthead: 170px */
-	left: 650px; /*760px;*/
-	background-position: 0 0;
-
-}
-
-#map_wing_chooser.ne { background-position: 0 0; }
-#map_wing_chooser.nw { background-position: -312px 0; }
-#map_wing_chooser.s { background-position: -624px 0; }
 
 #map_popup {
 
@@ -163,6 +153,8 @@
 	height: 620px;
 
 }
+
+.handicap #map_floor_chooser { top: 1180px; }
 
 .handicap #map_title { top: 1080px; }
 

@@ -9,6 +9,7 @@ Gotham-*
 
 #map images not uploaded to github for security reasons
 img/maps/*
+img/maps/static/*
 
 #files created by OS, etc.
 .DS_Store
