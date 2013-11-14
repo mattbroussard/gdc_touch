@@ -118,7 +118,8 @@ function baseRefreshScrollers() {
 			}
 		}
 		
-		$("#news_full iframe")[0].contentWindow.fixScroll();
+		var cw = $("#news_full iframe")[0].contentWindow;
+		if (cw.fixScroll) cw.fixScroll();
 	
 	}, 0);
 

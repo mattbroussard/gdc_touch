@@ -48,7 +48,8 @@ function launchNewsFull() {
 	
 	if (menuNewsScroller.animating || menuNewsScroller.moved) return;
 	
-	$("#news_full iframe")[0].contentWindow.load($(this).attr("data-source"));
+	$("#news_full iframe")[0].contentWindow.loadContent($(this).data("obj")["title"], $(this).data("obj")["content"]);
+	//$("#news_full iframe")[0].contentWindow.load($(this).attr("data-source"));
 	
 	$("body")
 		.addClass("page2")
@@ -64,7 +65,7 @@ function menuNewsLoaded(data, textStatus, jqXHR) {
 	
 	for (var i = 0; i < data.length; i++) {
 		
-		var div = $("<div>").addClass("menu_news_item").attr("data-source", data[i].link);
+		var div = $("<div>").addClass("menu_news_item")/*.attr("data-source", data[i].link)*/.data("obj", data[i]);
 		scrollSafeClick(div, launchNewsFull);
 		var h2 = $("<h2>").addClass("menu_news_headline").html(data[i].title).appendTo(div);
 		var blurb = $("<p>").addClass("menu_news_story").html(data[i].description).appendTo(div);

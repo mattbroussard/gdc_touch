@@ -79,6 +79,7 @@ function sendROSMessage(obj) {
 
 function startROSConnection() {
 
+	if (config_rosAddress == null) return;
 	if (rosConn && rosConn.socket.readyState <= 1) return;
 	
 	rosConn = new ros.Connection(config_rosAddress);

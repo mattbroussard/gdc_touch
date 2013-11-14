@@ -1,32 +1,38 @@
 
-/* These are a lie since we call them Helvetica but they're Gotham.
-   This way we don't have to change references to them everywhere. */
+/* We use three different fonts variations:
+    - Thin (Gotham Thin, Helevetica Neue Light, or something similar)
+    - Bold (Gotham Bold, Helvetica Neue Bold, or something similar)
+    - Book (Gotham Book, Helvetica Neue Regular, or something similar)
+   This makes it easy to swap out fonts.
+   Backup alternative fonts are specified with an appended '2', in case the primary preferred font is not available. */
+
+/* references using Gotham (Dan: put font files at specified urls, or change urls here; for the moment these will fail and use the Helvetica urls) */
 
 @font-face {
-	font-family: 'helveticalight';
+	font-family: 'gdc_touch_thin';
 	src: url('fonts/Gotham-Thin.ttf');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
-	font-family: 'helveticabold';
+	font-family: 'gdc_touch_bold';
 	src: url('fonts/Gotham-Bold.ttf');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
-	font-family: 'helveticastandard';
+	font-family: 'gdc_touch_book';
 	src: url('fonts/Gotham-Book.ttf');
 	font-weight: normal;
 	font-style: normal;
 }
 
-/* old version using Helvetica */
+/* references using Helvetica Neue */
 
-/* @font-face {
-    font-family: 'helveticalight';
+@font-face {
+    font-family: 'gdc_touch_thin2';
     src: url('fonts/helveticaneuelight.eot');
     src: url('fonts/helveticaneuelight.eot?#iefix') format('embedded-opentype'),
          url('fonts/helveticaneuelight.woff') format('woff'),
@@ -37,7 +43,7 @@
 }
 
 @font-face {
-    font-family: 'helveticabold';
+    font-family: 'gdc_touch_bold2';
     src: url('fonts/HelveticaNeue-Bold.eot');
     src: url('fonts/HelveticaNeue-Bold.eot?#iefix') format('embedded-opentype'),
          url('fonts/HelveticaNeue-Bold.woff') format('woff'),
@@ -47,11 +53,11 @@
 }
 
 @font-face {
-    font-family: 'helveticastandard';
+    font-family: 'gdc_touch_book2';
     src: url('fonts/HelveticaNeue.eot');
     src: url('fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype'),
          url('fonts/HelveticaNeue.woff') format('woff'),
          url('fonts/HelveticaNeue.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
-} */
+}

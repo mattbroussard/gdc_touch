@@ -16,7 +16,7 @@
 #research_title {
 
 	position: absolute;
-	top: 70px;
+	top: 95px; /* old masthead: 70px */
 	left: 20px;
 
 }
@@ -27,10 +27,10 @@
 
 	z-index: 21;
 	position: absolute;
-	top: 170px;
+	top: 195px; /* old masthead: 170px */
 	left: 20px;
 	width: 1040px;
-	height: 1630px;
+	height: 1605px; /* old masthead: 1630px */
 	padding: 0;
 	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)), color-stop(0.9,rgba(0,0,0,1)));
 
@@ -71,10 +71,10 @@
 
 	z-index: 21;
 	position: absolute;
-	top: 170px;
+	top: 195px; /* old masthead: 170px */
 	left: 0;
 	width: 1040px;
-	height: 1630px;
+	height: 1605px; /* old masthead: 1630px */
 	border: 0 none;
 	background: transparent;
 

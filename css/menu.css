@@ -28,7 +28,7 @@
 	text-align: center;
 	color: white;
 	letter-spacing: 1.1px;
-	font-family: 'helveticalight';
+	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
 	font-size: 20pt;
 
 	padding: 0;
@@ -95,7 +95,7 @@
 	text-align: center;
 	position: absolute;
 	width: 1080px;
-	height: 700px;
+	height: 675px; /* old masthead: 700px */
 	bottom: 70px;
 	left: 0;
 
@@ -112,20 +112,20 @@
 #menu_news {
 
 	position: absolute;
-	top: 70px;
+	top: 95px; /* old masthead: 70px */
 	left: 30px;
 	width: 640px;
-	height: 1100px;
+	height: 1075px; /* old masthead: 1100px */
 
 }
 
 #menu_events {
 
 	position: absolute;
-	top: 70px;
+	top: 95px; /* old masthead: 70px */
 	left: 680px;
 	width: 380px;
-	height: 1100px;
+	height: 1075px; /* old masthead: 1100px */
 
 }
 
@@ -184,7 +184,7 @@
 	height: 585px;
 	overflow: hidden;
 	color: white;
-	font-family: 'helveticalight';
+	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
 	font-size: 14pt;
 	font-weight: bold;
 	/* -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0)), color-stop(0.05,rgba(0,0,0,1)), color-stop(0.9,rgba(0,0,0,1))); */
@@ -208,7 +208,7 @@
 
 	margin: 0;
 	margin-top: 20px;
-	font-family: 'helveticabold';
+	font-family: 'gdc_touch_bold', 'gdc_touch_bold2', sans-serif;
 	font-weight: normal;
 	letter-spacing: 2px;
 	font-size: 18pt;
@@ -235,7 +235,7 @@
 	height: 1000px;
 	overflow: hidden;
 	color: white;
-	font-family: 'helveticalight';
+	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
 	font-size: 14pt;
 	font-weight: bold;
 	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)), color-stop(0.9,rgba(0,0,0,1)));
@@ -252,7 +252,7 @@
 
 .menu_events_time, .menu_events_location {
 
-	font-family: 'helveticabold';
+	font-family: 'gdc_touch_bold', 'gdc_touch_bold2', sans-serif;
 	font-weight: normal;
 	letter-spacing: 1.1px;
 	display: block;
@@ -279,7 +279,7 @@
 	font-size: 64pt;
 	color: white;
 	letter-spacing: 1.1px;
-	font-family: 'helveticalight';
+	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
 
 }
 
@@ -326,10 +326,10 @@
 
 	z-index: 21;
 	position: absolute;
-	top: 170px;
+	top: 195px; /* old masthead: 170px */
 	left: 20px;
 	width: 1040px;
-	height: 1630px;
+	height: 1605px; /* old masthead: 1630px */
 	border: 0 none;
 	background: transparent;
 
@@ -338,7 +338,7 @@
 #news_full_title {
 
 	position: absolute;
-	top: 70px;
+	top: 95px; /* old masthead: 70px */
 	left: 20px;
 
 }

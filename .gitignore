@@ -1,5 +1,6 @@
 #files used locally that should not be uploaded to github
 noupload
+json
 
 #fonts not uploaded to github for licensing reasons
 Helvetica*

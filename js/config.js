@@ -1,12 +1,13 @@
 
-var config_rosAddress = "ws://farnsworth.csres.utexas.edu:9090";
+var config_rosAddress = null; //the websocket address with port for roslibjs communications (e.g. ws://server:9090/)
 
+//Note: setting news_slideshow to null removes the news slideshow and expands the size of the news story scroll view.
 var config_dataSources = {
-	"news" : "php/news.php",
+	"news" : "json/news.json",
 	"news_slideshow" : "json/news_slideshow.json",
-	"events" : "php/events.php",
-	"directory" : "php/directory.php",
-	"rooms" : "php/rooms.php"
+	"events" : "json/events.json",
+	"directory" : "json/directory.json",
+	"rooms" : "json/rooms.json"
 };
 
 var config_coverSlideshow = [

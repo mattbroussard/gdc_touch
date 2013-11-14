@@ -20,6 +20,7 @@ body, html {
 }
 
 * {
+	/* uncomment to enforce hidden cursor, though eCrisper does this for you */
 	cursor: /*url(../img/blank_cursor.png),*/ default;
 	-webkit-user-select: none;
 	-webkit-user-drag: none;
@@ -61,8 +62,17 @@ input {
 	top: 0;
 	left: 0;
 	width: 1080px;
+
+	/* old masthead:
 	height: 50px;
 	background: url(../img/blackbar3.png) no-repeat;
+	*/
+
+	background-color: white;
+	background-image: url(../img/dept_masthead_medium.png);
+	background-position: center 5px;
+	background-repeat: no-repeat;
+	height: 85px;
 	
 }
 
@@ -151,7 +161,7 @@ input {
 	z-index: 4;
 	line-height: 70px;
 	letter-spacing: 1.1px;
-	font-family: 'helveticalight';
+	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
 	text-transform: uppercase;
 	font-size: 28pt;
 
@@ -168,7 +178,7 @@ input {
 	background: rgb(23,46,94);
 	border-radius: 15px;
 	color: white;
-	font-family: 'helveticalight';
+	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
 	font-size: 15pt;
 	text-align: center;
 	border: 0px none;
@@ -202,7 +212,7 @@ input {
 
 .data_error {
 
-	font-family: 'helveticalight';
+	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
 	font-weight: bold;
 	letter-spacing: 1px;
 	color: white;

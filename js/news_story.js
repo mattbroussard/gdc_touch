@@ -20,6 +20,20 @@ function loadingDone() {
 
 }
 
+function loadContent(title, content) {
+
+	$("body > div > div *").remove();
+	$("body").addClass("done_loading");
+	$("body > div > div").html(content);
+	$("div.gallery-caption, div.terms, iframe, embed, object, audio, video").remove();
+	$("img").each(function() {
+		if ($(this).attr("src").indexOf("data:")!=0) $(this).remove();
+	})
+	$("<h1>").addClass("title").text(title).prependTo("body > div > div");
+	fixScroll();
+
+}
+
 function load(url) {
 
 	$("body").removeClass("done_loading");

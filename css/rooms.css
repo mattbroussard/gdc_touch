@@ -16,7 +16,7 @@
 #rooms_title {
 
 	position: absolute;
-	top: 70px;
+	top: 95px; /* old masthead: 70px */
 	left: 20px;
 
 }
@@ -25,13 +25,13 @@
 
 	z-index: 21;
 	position: absolute;
-	top: 170px;
+	top: 195px; /* old masthead: 170px */
 	left: 20px;
 	width: 1040px;
-	height: 1630px;
+	height: 1605px; /* old masthead: 1630px */
 	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)), color-stop(0.9,rgba(0,0,0,1)));
 	
-	font-family: 'helveticalight';
+	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
 	color: white;
 	font-size: 20pt;
 	letter-spacing: 1px;
@@ -47,7 +47,7 @@
 .room_num {
 	
 	font-size: 26pt;
-	font-family: 'helveticastandard';
+	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
 	
 }
 
@@ -57,7 +57,7 @@
 }
 
 .room_event_time {
-	font-family: 'helveticastandard';
+	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
 }
 
 .room_item {

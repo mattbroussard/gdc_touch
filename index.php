@@ -1,5 +1,5 @@
 <?php
-	$modules = array("base", "cover", "menu", "about", "directory", "rooms", /*"stupid_map",*/ "bwi", "research");
+	$modules = array("base", "cover", "menu", "about", "directory", "rooms", /*"stupid_map",*/ /*"bwi",*/ "research");
 	$t = time();
 ?><!DOCTYPE html>
 <html>

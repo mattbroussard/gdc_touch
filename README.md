@@ -16,5 +16,4 @@ Open source code from jQuery, iScroll, Font Awesome, and ROSjs libraries are inc
 
 # Project Status
 
-In the fall, Robert and Matt will both be taking the CS378 course and will continue improving this application while working on other projects. Negotiating the deployment of a milestone version of the application on the screens is currently in progress.
- 
+This project began in Spring 2013 as part of the CS378 FRI course. Work has continued (albeit slower) in the fall CS378 FRI continuation course. We are currently negotiating the deployment of the application on actual displays with the department.

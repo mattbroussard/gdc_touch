@@ -16,7 +16,7 @@
 #bwi_title {
 
 	position: absolute;
-	top: 70px;
+	top: 95px; /* old masthead: 70px */
 	left: 20px;
 
 }
@@ -33,7 +33,7 @@
 	color: white;
 	font-size: 56pt;
 	text-align: center;
-	font-family: 'helveticalight';
+	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
 	letter-spacing: 1px;
 	position: absolute;
 	top: 50%;
@@ -93,7 +93,7 @@
 	background: rgb(23,46,94);
 	border-radius: 15px;
 	color: white;
-	font-family: 'helveticalight';
+	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
 	font-size: 24pt;
 	text-align: center;
 	border: 0px none;
