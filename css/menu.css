@@ -12,7 +12,7 @@
 	z-index: 10;
 	
 	visibility: hidden;
-	//-webkit-transform: scaleX(0) scaleY(0);
+	/* -webkit-transform: scaleX(0) scaleY(0); */
 
 }
 
@@ -289,8 +289,8 @@
 	-webkit-transition: visibility 0s;
 	-webkit-transition-delay: 0.5s;
 
-	//-webkit-transform: scaleX(1) scaleY(1);
-	//-webkit-transition: -webkit-transform 0.75s;
+	/* -webkit-transform: scaleX(1) scaleY(1);
+	-webkit-transition: -webkit-transform 0.75s; */
 
 }
 
@@ -331,7 +331,8 @@
 	width: 1040px;
 	height: 1605px; /* old masthead: 1630px */
 	border: 0 none;
-	background: transparent;
+	background-color: transparent;
+	background: none;
 
 }
 

@@ -4,7 +4,7 @@ var config_rosAddress = null; //the websocket address with port for roslibjs com
 //Note: setting news_slideshow to null removes the news slideshow and expands the size of the news story scroll view.
 var config_dataSources = {
 	"news" : "json/news.json",
-	"news_slideshow" : "json/news_slideshow.json",
+	"news_slideshow" : null,
 	"events" : "json/events.json",
 	"directory" : "json/directory.json",
 	"rooms" : "json/rooms.json"
@@ -29,61 +29,8 @@ var config_research = [
 	}
 ];
 
-var config_maps = [
-	{
-		"floor" : "1N",
-		"image" : "img/maps/static/gdcfloorplan1N.png"
-	},
-	{
-		"floor" : "1S",
-		"image" : "img/maps/static/gdcfloorplan1S.png"
-	},
-	{
-		"floor" : "2N",
-		"image" : "img/maps/static/gdcfloorplan2N.png"
-	},
-	{
-		"floor" : "2S",
-		"image" : "img/maps/static/gdcfloorplan2S.png"
-	},
-	{
-		"floor" : "3N",
-		"image" : "img/maps/static/gdcfloorplan3N.png"
-	},
-	{
-		"floor" : "3S",
-		"image" : "img/maps/static/gdcfloorplan3S.png"
-	},
-	{
-		"floor" : "4N",
-		"image" : "img/maps/static/gdcfloorplan4N.png"
-	},
-	{
-		"floor" : "4S",
-		"image" : "img/maps/static/gdcfloorplan4S.png"
-	},
-	{
-		"floor" : "5N",
-		"image" : "img/maps/static/gdcfloorplan5N.png"
-	},
-	{
-		"floor" : "5S",
-		"image" : "img/maps/static/gdcfloorplan5S.png"
-	},
-	{
-		"floor" : "6N",
-		"image" : "img/maps/static/gdcfloorplan6N.png"
-	},
-	{
-		"floor" : "6S",
-		"image" : "img/maps/static/gdcfloorplan6S.png"
-	},
-	{
-		"floor" : "7N",
-		"image" : "img/maps/static/gdcfloorplan7N.png"
-	},
-	{
-		"floor" : "7S",
-		"image" : "img/maps/static/gdcfloorplan7S.png"
-	}
-];
+//config_maps could be manually populated, but we're going to do it in code because it's cleaner... sort of.
+var config_maps = [];
+for (var i = 1; i <= 7; i++)
+	for (var j in {"N":0,"S":0,"":0})
+		config_maps.push({"floor":i+j,"image":"img/maps/static/gdcfloorplan"+i+j+".png"});

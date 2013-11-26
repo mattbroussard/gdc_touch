@@ -10,7 +10,7 @@ var pageClasses = ["page_about", "page_directory", "page_rooms", "page_news_full
 function baseGetLocation() {
 
 	var loc = window.location.href.split("?location=");
-	return loc.length >= 2 ? loc[1] : "0";
+	return loc.length >= 2 ? loc[1] : "0"; //NOTE: do not modify this line! Specify the location using a GET parameter such as ?location=3N
 
 }
 

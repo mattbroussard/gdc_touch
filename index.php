@@ -1,5 +1,5 @@
 <?php
-	$modules = array("base", "cover", "menu", "about", "directory", "rooms", "static_map", /*"bwi",*/ "research");
+	$modules = array("base", "cover", "menu", "about", "directory", "rooms", "static_map" /*,"bwi","research"*/);
 	$t = time();
 ?><!DOCTYPE html>
 <html>
@@ -38,4 +38,4 @@
 </div>
 </body>
 </html>
-<!-- authored by Matt Broussard in March 2013 -->
+<!-- authored by Matt Broussard in March-November 2013 -->

@@ -27,7 +27,7 @@
 
 }
 
-#cover_clock { /* this is currently not used */
+#cover_clock { /* not currently using */
 
 	position: absolute;
 	top: 60px;
@@ -40,6 +40,8 @@
 	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
 	text-transform: uppercase;
 	text-shadow: #333 3px 3px 3px;
+
+	display: none !important;
 
 }
 
@@ -137,7 +139,6 @@
 
 }
 
-#cover_clock { display: none !important; }
 #cover_location {
 
 	position: absolute;
@@ -153,12 +154,14 @@
 
 #cover_location label {
 
-	font-size: 44pt;
+	font-size: 45pt;
 	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
+	text-transform: uppercase;
 	font-weight: bold;
 	letter-spacing: 2px;
 	display: block;
-	margin-bottom: 25px;
+	margin-bottom: 10px;
+	margin-top: 15px;
 
 }
 

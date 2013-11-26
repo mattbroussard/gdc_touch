@@ -56,7 +56,10 @@ $(function() {
 	$("#map_floor_chooser button").click(function() {
 		$("#map_floor_chooser button").removeClass("on");
 		$(this).addClass("on");
-		mapCurLoc = $(this).attr("id").replace("map_floor_chooser_button_","") + mapCurLoc.substring(1);
+
+		mapCurLoc = $(this).attr("id").replace("map_floor_chooser_button_","");
+		if (mapCurLoc == baseGetLocation().charAt(0)) mapCurLoc += baseGetLocation().charAt(1);
+		
 		$("#map_container > div > img").hide();
 		$("#map_image_"+mapCurLoc).show();
 	});

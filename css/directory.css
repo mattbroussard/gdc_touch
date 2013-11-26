@@ -55,27 +55,6 @@
 
 }
 
-.directory_tab {
-
-	float: right;
-	display: inline-block;
-	width: 150px;
-	height: 75px;
-	margin: 0;
-	margin-left: 10px;
-	margin-right: 10px;
-	background: #d4d4d4;
-	border: 4px solid black;
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
-	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
-	line-height: 75px;
-	font-size: 25pt; /*32pt;*/
-	text-align: center;
-	font-weight: bold;
-
-}
-
 #directory_filter_label {
 
 	float: left;
@@ -90,13 +69,6 @@
 	letter-spacing: 3px;
 	font-size: 32pt; /*44pt;*/
 	text-align: center;
-
-}
-
-.directory_tab.on {
-
-	background: white;
-	border-bottom: 4px solid white;
 
 }
 
@@ -155,10 +127,47 @@
 .directory_item.staff .type { background: #008; }
 .directory_item.grad .type { background: #800; }
 .directory_item.office .type { background: #880; }
-#directory_faculty { color: #060; }
-#directory_staff { color: #008; }
-#directory_grad { color: #800; }
-#directory_office { color: #880; }
+
+.directory_tab {
+
+	float: right;
+	display: inline-block;
+	width: 150px;
+	height: 75px;
+	margin: 0;
+	margin-left: 10px;
+	margin-right: 10px;
+	background: #d4d4d4;
+	border: 4px solid black;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
+	line-height: 75px;
+	font-size: 25pt; /*32pt;*/
+	text-align: center;
+	font-weight: bold;
+
+}
+
+/* new coloring for the tabs at Dan's request, 11.19.2013 */
+#directory_faculty { background-color: #060; color: white; }
+#directory_staff { background-color: #008; color: white; }
+#directory_grad { background-color: #800; color: white; }
+#directory_office { background-color: #880; color: white; }
+#directory_all { background-color: #888; color: white; }
+
+#directory_faculty.on { color: #060; background-color: white; }
+#directory_staff.on { color: #008; background-color: white; }
+#directory_grad.on { color: #800; background-color: white; }
+#directory_office.on { color: #880; background-color: white; }
+#directory_all.on { background-color: #fff; color: black; }
+
+.directory_tab.on {
+
+	background: white;
+	border-bottom: 4px solid white;
+
+}
 
 .directory_item .lName {
 	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;

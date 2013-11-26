@@ -9,6 +9,7 @@ html, body {
 
 	font-size: 18pt;
 	background-color: transparent;
+	background: none;
 	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
 	letter-spacing: 1px;
 	overflow: hidden;
@@ -16,6 +17,12 @@ html, body {
 	padding: 0;
 	color: white;
 
+}
+
+/* hack because eCrisper inexplicably does not support transparent iframes; added 11.21.2013 */
+body {
+	background-image: url(../img/bg4.png);
+	background-position: -20px -195px;
 }
 
 body > div {
