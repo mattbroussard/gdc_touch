@@ -4,7 +4,7 @@ var config_rosAddress = null; //the websocket address with port for roslibjs com
 //Note: setting news_slideshow to null removes the news slideshow and expands the size of the news story scroll view.
 var config_dataSources = {
 	"news" : "json/news.json",
-	"news_slideshow" : null,
+	"news_slideshow" : "json/news_slideshow.json",
 	"events" : "json/events.json",
 	"directory" : "json/directory.json",
 	"rooms" : "json/rooms.json"

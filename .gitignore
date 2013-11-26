@@ -1,6 +1,8 @@
 #files used locally that should not be uploaded to github
 noupload
 json
+updaters
+deploy.sh
 
 #fonts not uploaded to github for licensing reasons
 Helvetica*
