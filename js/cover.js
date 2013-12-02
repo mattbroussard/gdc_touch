@@ -16,10 +16,12 @@ function coverSlideUpdate() {
 
 }
 
-function coverTouch() {
+function coverTouch(event) {
 
 	menuSlideshowReset();
 	
+	track("cover_open", event, new Date().getTime());
+
 	$("body")
 		.removeClass("handicap")
 		.removeClass("page0")

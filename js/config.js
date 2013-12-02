@@ -1,5 +1,6 @@
 
 var config_rosAddress = null; //the websocket address with port for roslibjs communications (e.g. ws://server:9090/)
+var config_trackerEndpoint = null; //url to which POST requests can be sent with tracker events
 
 //Note: setting news_slideshow to null removes the news slideshow and expands the size of the news story scroll view.
 var config_dataSources = {

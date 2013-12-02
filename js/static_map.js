@@ -3,7 +3,8 @@ var mapCurLoc = "3N";
 
 /* scrollSafeClick() implemented in menu.js */
 
-function mapPopup(room, $elem) {
+//code from when the map had a popup window with extra info; maybe to be re-enabled in the future?
+/* function mapPopup(room, $elem) {
 
 	var name = $elem.attr("data-subtitle");
 	var phone = $elem.attr("data-phone");
@@ -37,7 +38,7 @@ function mapClick() {
 
 	mapPopup($(this).text(), $(this));
 
-}
+} */
 
 $(function() {
 
@@ -59,6 +60,7 @@ $(function() {
 
 		mapCurLoc = $(this).attr("id").replace("map_floor_chooser_button_","");
 		if (mapCurLoc == baseGetLocation().charAt(0)) mapCurLoc += baseGetLocation().charAt(1);
+		track({"event":"map_choose_floor","floor":mapCurLoc});
 		
 		$("#map_container > div > img").hide();
 		$("#map_image_"+mapCurLoc).show();
@@ -70,10 +72,10 @@ $(function() {
 	$("#map_floor_chooser_button_"+mapCurLoc.charAt(0)).addClass("on").click();
 
 	//any clicks not on the map popup close the map popup
-	$("body").mousedown(function(e) {
+	/* $("body").mousedown(function(e) {
 		if ($(e.target).is("#map_popup")) return;
 		if ($(e.target).parents("#map_popup").length!=0) return;
 		$("#map_popup").hide();
-	});
+	}); */
 
 });

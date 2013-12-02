@@ -3,6 +3,7 @@ var directoryScroller = null;
 var directoryFilterType = "all";
 var directoryLastQuery = "";
 var directoryDatabase = null;
+var directoryTrackerTimeout = null;
 
 function directoryDataForRoom(room) {
 
@@ -55,6 +56,16 @@ function keyboardPress() {
 		
 		search[0].selectionStart = start + character.length;
 		search[0].selectionEnd = start + character.length;
+
+		//because we don't want to track events for everything the user types, let's only do it if they wait 2 seconds before typing something else.
+		if (directoryTrackerTimeout != null) {
+			clearTimeout(directoryTrackerTimeout);
+			directoryTrackerTimeout = null;
+		}
+		directoryTrackerTimeout = setTimeout(function() {
+			directoryTrackerTimeout = null;
+			if (newQuery!="") track({"event":"directory_search","query":newQuery});
+		}, 2000);
 	
 	} else {
 
@@ -116,6 +127,7 @@ function directoryJumplistButton() {
 
 	var letter = $(this).text();
 	var el = $(".directory_division_"+letter.toUpperCase()+":visible")[0];
+	track({"event":"directory_jump_letter","letter":letter});
 	directoryScroller.scrollToElement(el, 200);
 
 }
@@ -123,6 +135,7 @@ function directoryJumplistButton() {
 function directoryTopJump() {
 
 	directoryScroller.scrollToPage(0,0,200);
+	track("directory_jump_top");
 
 }
 
@@ -273,6 +286,8 @@ function directoryTabClick() {
 
 	directoryFilterType = $(this).attr("id").replace("directory_","");
 	
+	track({"event":"directory_filter","type":directoryFilterType});
+
 	$(".directory_tab.on").removeClass("on");
 	$(this).addClass("on");
 	
@@ -285,7 +300,7 @@ $(function() {
 	enableMenuButton("directory");
 	buildKeyboard();
 	directoryLoadContent();
-	directoryScroller = new iScroll("directory_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none" });
+	directoryScroller = new iScroll("directory_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none", onScrollEnd:function(e){track("directory_scroll",e);} });
 	
 	$(".directory_tab").click(directoryTabClick);
 

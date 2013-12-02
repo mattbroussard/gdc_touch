@@ -30,7 +30,7 @@ $(function() {
 
 	enableMenuButton("rooms");
 	
-	roomsScroller = new iScroll("rooms_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none" });
+	roomsScroller = new iScroll("rooms_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none", onScrollEnd:function(e){track("rooms_scroll",e);} });
 	$.getJSON(config_dataSources["rooms"], roomsContentLoaded);
 
 });

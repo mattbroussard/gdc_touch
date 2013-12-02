@@ -48,6 +48,8 @@ function launchNewsFull() {
 	
 	if (menuNewsScroller.animating || menuNewsScroller.moved) return;
 	
+	track({"event":"news_full","page":$(this).data("obj")["title"]});
+
 	$("#news_full iframe")[0].contentWindow.loadContent($(this).data("obj")["title"], $(this).data("obj")["content"]);
 	//$("#news_full iframe")[0].contentWindow.load($(this).attr("data-source"));
 	
@@ -218,14 +220,15 @@ $(function() {
 		$(this).removeClass("on");
 	});
 	
-	menuNewsScroller = new iScroll("menu_news_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none" });
-	menuEventsScroller = new iScroll("menu_events_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none" });
+	menuNewsScroller = new iScroll("menu_news_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none", onScrollEnd:function(e){track("news_scroll",e);} });
+	menuEventsScroller = new iScroll("menu_events_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none", onScrollEnd:function(e){track("events_scroll",e);} });
 	
 	$("body").addClass("menu_noSlideshow");
 	menuLoadContent();
 	
 	$(".menu_button").click(function() {
 		var name = $(this).attr("id").split("_")[1];
+		track("menu_button_"+name);
 		$("body")
 			.addClass("page2")
 			.removeClass("page1")
