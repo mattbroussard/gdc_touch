@@ -93,7 +93,7 @@ input {
 
 	width: 130px;
 	height: 130px;
-	background: rgb(23,46,94);
+	background: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
 	border-radius: 65px;
 	border: 0px none;
 	outline: 0px none;
@@ -175,7 +175,7 @@ input {
 	width: 500px;
 	margin-left: -250px;
 	z-index: 2000;
-	background: rgb(23,46,94);
+	background: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
 	border-radius: 15px;
 	color: white;
 	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;

@@ -10,12 +10,26 @@ var pageClasses = ["page_about", "page_directory", "page_rooms", "page_news_full
 
 var currentUID = 0;
 var trackedEvents = [];
+var trackerSuppress = null;
+var trackerFlushInflight = null;
 
-function track(/* obj, event, uid */) {
+//avoid UI performance problems related to track() taking awhile
+function track() {
+	var that = this;
+	var args = arguments;
+	setTimeout(function() { doTrack.apply(that, args); }, 0);
+}
+
+function doTrack(/* obj, event, uid */) {
 
 	var obj = arguments[0];
 	if (obj==null) return;
 	if (typeof(obj)=="string") obj = {"event":obj};
+
+	//There are cases where we want to suppress tracking events momentarily
+	if (trackerSuppress != null)
+		if (obj["event"].indexOf(trackerSuppress) >= 0)
+			return;
 
 	//We attempt to discern unique users.
 	if (arguments.length>=3) {
@@ -39,6 +53,15 @@ function track(/* obj, event, uid */) {
 	obj["time"] = new Date().getTime();
 	obj["loc"] = baseGetLocation();
 
+	//Since this will be stored in a SQL database with inflexible schema on the server, we need to normalize extra properties
+	var allowed = ["event", "uid", "time", "loc", "x", "y", "meta"];
+	outer: for (var i in obj) {
+		for (var j in allowed)
+			if (allowed[j]==i) continue outer;
+		obj["meta"] = obj[i];
+		delete obj[i];
+	}
+
 	//For debugging, also print the event object to the console.
 	if (console) console.log(obj);
 
@@ -46,13 +69,45 @@ function track(/* obj, event, uid */) {
 	trackedEvents.push(obj);
 	if (trackedEvents.length > 1000) trackedEvents.splice(0, 100);
 	if (window.localStorage) window.localStorage["trackedEvents"] = JSON.stringify(trackedEvents);
-	if (trackedEvents.length > 15) flushTracker();
+	if (trackedEvents.length >= 1) flushTracker();
 
 }
 
 function flushTracker() {
 
-	//currently this is unused. Eventually will push events list out to a server and clear it locally.
+	if (trackerFlushInflight != null || config_trackerEndpoint == null) return;
+	trackerFlushInflight = trackedEvents;
+	trackedEvents = [];
+	if (window.localStorage) window.localStorage["trackerEvents"] = "[]";
+
+	console.log("trackerFlush sending " + trackerFlushInflight.length + " events to endpoint " + config_trackerEndpoint);
+
+	var ret = function(data) {
+		if (data=="Success") {
+			trackerFlushInflight = null;
+			if (console) console.log("trackerFlush XHR success");
+		} else {
+			trackedEvents = trackerFlushInflight;
+			if (window.localStorage) window.localStorage["trackedEvents"] = JSON.stringify(trackedEvents);
+			trackerFlushInflight = null;
+			if (console) console.log("trackerFlush XHR failure");
+		}
+	};
+
+	$.ajax({
+		success:ret,
+		error:ret,
+		data:JSON.stringify(trackerFlushInflight),
+		url:config_trackerEndpoint,
+		type:"POST"
+	});
+
+}
+
+function suppressTracking(event, time) {
+
+	trackerSuppress = event;
+	setTimeout(function() { trackerSuppress = null; }, time);
 
 }
 
@@ -88,6 +143,8 @@ function baseClockUpdate() {
 }
 
 function reset() {
+
+	suppressTracking("scroll", 2000);
 
 	for (var i in pageClasses) {
 		$("body").removeClass(pageClasses[i]);
@@ -245,9 +302,12 @@ $(function() {
 		if (e.keyCode == 9) e.preventDefault();
 	});
 	
-	//For debug purposes, allow page to be manually refreshed.
+	//For debug purposes, allow page to be manually refreshed by clicking the masthead while in handicap mode on the About page.
 	$("#base_blackbar").click(function() {
-		if ($("body").is(".handicap.page_about")) window.location.reload();
+		if ($("body").is(".handicap.page_about")) {
+			flushTracker();
+			setTimeout(function() { window.location.reload(); }, 1000);
+		}
 	});
 
 	pageLoadTimestamp = new Date().getTime();

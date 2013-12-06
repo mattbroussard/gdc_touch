@@ -72,13 +72,13 @@
 	font-weight: bold;
 	height: 2.5em;
 	background: white;
-	color: rgb(23,46,94);
+	color: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
 
 }
 
 #map_floor_chooser button.on {
 
-	background-color: rgb(23,46,94);
+	background-color: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
 	color: white;
 
 }
@@ -113,7 +113,7 @@
 
 #map_popup button {
 
-	background-color: rgb(23,46,94);
+	background-color: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
 	color: white;
 	border: 0;
 	outline: 0;

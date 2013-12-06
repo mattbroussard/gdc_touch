@@ -13,6 +13,10 @@ Gotham-*
 img/maps/*
 img/maps/static/*
 
+#this folder now contains scripts for the server that manages tracking data; don't want these on github.
+php
+php/*
+
 #files created by OS, etc.
 .DS_Store
 .DS_Store?

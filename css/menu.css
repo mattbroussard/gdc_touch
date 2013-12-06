@@ -20,7 +20,7 @@
 
 	width: 240px;
 	height: 240px;
-	background: rgb(23,46,94);
+	background: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
 	border-radius: 120px;
 	border: 0px none;
 	outline: 0px none;

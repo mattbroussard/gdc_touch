@@ -95,8 +95,8 @@
 	-webkit-transform: rotateZ(45deg);
 	overflow: hidden;
 	
-	background-color: #172e5e;
-	background-image: url(../img/cover_title2.png);
+	background-color: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
+	background-image: url(../img/cover_title3.png);
 	background-repeat: no-repeat;
 
 }
@@ -113,7 +113,7 @@
 	-webkit-transform-origin: 0 0;
 	-webkit-transform: rotateZ(45deg);
 	
-	background-color: #172e5e;
+	background-color: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
 
 }
 
@@ -154,7 +154,7 @@
 
 #cover_location label {
 
-	font-size: 45pt;
+	font-size: 56pt; /* previously 45pt; changed at Dan's request, 12052013 */
 	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -162,6 +162,7 @@
 	display: block;
 	margin-bottom: 10px;
 	margin-top: 15px;
+	opacity: 0.5; /* added at Dan's request, 12052013 */
 
 }
 
@@ -170,6 +171,7 @@
 	font-size: 400pt;
 	position: relative;
 	top: -100px;
+	opacity: 0.5; /* added at Dan's request, 12052013 */
 
 }
 

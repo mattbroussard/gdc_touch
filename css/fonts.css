@@ -1,6 +1,6 @@
 
 /* We use three different fonts variations:
-    - Thin (Gotham Thin, Helevetica Neue Light, or something similar)
+    - Thin (Gotham Thin, Gotham Light, Helevetica Neue Light, or something similar)
     - Bold (Gotham Bold, Helvetica Neue Bold, or something similar)
     - Book (Gotham Book, Helvetica Neue Regular, or something similar)
    This makes it easy to swap out fonts.
@@ -10,7 +10,7 @@
 
 @font-face {
 	font-family: 'gdc_touch_thin';
-	src: url('fonts/Gotham-Thin.ttf');
+	src: url('fonts/Gotham-Light.ttf'); /* changed to Gotham Light at Dan's request, 12052013 */
 	font-weight: normal;
 	font-style: normal;
 }

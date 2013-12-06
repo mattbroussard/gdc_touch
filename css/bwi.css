@@ -90,7 +90,7 @@
 	width: 500px;
 	margin-left: -250px;
 	z-index: 2000;
-	background: rgb(23,46,94);
+	background: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
 	border-radius: 15px;
 	color: white;
 	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;

@@ -261,7 +261,7 @@
 	display: inline-block;
 	border: 0 none;
 	outline: none;
-	background: rgb(23,46,94);
+	background: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
 	color: white;
 	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
 	width: 80px;
@@ -344,7 +344,7 @@
 	outline: 0;
 	width: 50px;
 	height: 50px;
-	background: rgb(23,46,94);
+	background: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
 	border-radius: 10px;
 	line-height: 50px;
 	color: white;
