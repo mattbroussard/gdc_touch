@@ -7,6 +7,12 @@ function fixScroll() {
 
 }
 
+function resetScroll() {
+
+	scroller.scrollToPage(0,0,0);
+
+}
+
 function loadingDone() {
 
 	$("body").addClass("done_loading");

@@ -238,3 +238,14 @@ input {
 	background: #000 url(../img/unsupported.png) no-repeat;
 	
 }
+
+#base_version { display: none; }
+body.page_about.handicap #base_version {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: black;
+	font-size: 10px;
+	z-index: 65532;
+}

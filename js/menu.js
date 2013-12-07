@@ -117,6 +117,10 @@ function menuEventsLoaded(data, textStatus, jqXHR) {
 	
 	for (var i = 0; i < data.length; i++) {
 		
+		//Don't display events more than a day ago
+		var oneday = 24 * 60 * 60 * 1000;
+		if (data[i].time < (new Date().getTime() - oneday)) continue;
+
 		var div = $("<div>").addClass("menu_events_item").attr("data-source", data[i].link);
 		var time = $("<span>").addClass("menu_events_time").html(fuzzyTime(data[i].time)).appendTo(div);
 		var title = $("<span>").addClass("menu_events_title").html(data[i].title).appendTo(div);
@@ -227,12 +231,17 @@ $(function() {
 	menuLoadContent();
 	
 	$(".menu_button").click(function() {
+
+		//fix a bug where clicking a button during the animation of opening a different page could cause two pages to be overlayed.
+		if ($("body").hasClass("page2")) return;
+
 		var name = $(this).attr("id").split("_")[1];
 		track("menu_button_"+name);
 		$("body")
 			.addClass("page2")
 			.removeClass("page1")
 			.addClass("page_"+name);
+			
 	});
 	
 });

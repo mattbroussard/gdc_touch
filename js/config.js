@@ -1,6 +1,12 @@
 
 var config_rosAddress = null; //the websocket address with port for roslibjs communications (e.g. ws://server:9090/)
+
 var config_trackerEndpoint = null; //url to which POST requests can be sent with tracker events
+var config_trackerFlushQuota = 1; //number of events after which the tracker will attempt to flush its event queue to the server
+var config_trackerDropQuota = 1000; //number of events after which the tracker will dump 1/10 of its events (this should only be hit if flushes to the server are failing)
+
+var config_mouseThreshold = 2 * 60 * 1000; //timeout in milliseconds to return to the cover screen after no activity
+var config_reloadThreshold = 6 * 60 * 60 * 1000; //timeout in milliseconds to reload the page
 
 //Note: setting news_slideshow to null removes the news slideshow and expands the size of the news story scroll view.
 var config_dataSources = {

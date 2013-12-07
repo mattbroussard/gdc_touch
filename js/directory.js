@@ -226,6 +226,8 @@ function resetDirectory() {
 	$("#directory_no_results").hide();
 	$("#directory_search").removeClass("flash");
 
+	directoryScroller.scrollToPage(0,0,0);
+
 }
 
 function directoryLoadContent() {

@@ -10,11 +10,12 @@ var pageClasses = ["page_about", "page_directory", "page_rooms", "page_news_full
 
 var currentUID = 0;
 var trackedEvents = [];
-var trackerSuppress = null;
+var trackerSuppress = [];
+var trackerSuppressTimeout = null;
 var trackerFlushInflight = null;
 
 //avoid UI performance problems related to track() taking awhile
-function track() {
+function track(/* obj, event, uid */) {
 	var that = this;
 	var args = arguments;
 	setTimeout(function() { doTrack.apply(that, args); }, 0);
@@ -27,8 +28,8 @@ function doTrack(/* obj, event, uid */) {
 	if (typeof(obj)=="string") obj = {"event":obj};
 
 	//There are cases where we want to suppress tracking events momentarily
-	if (trackerSuppress != null)
-		if (obj["event"].indexOf(trackerSuppress) >= 0)
+	for (var i = 0; i < trackerSuppress.length; i++)
+		if (obj["event"].indexOf(trackerSuppress[i]["event"]) >= 0)
 			return;
 
 	//We attempt to discern unique users.
@@ -67,9 +68,9 @@ function doTrack(/* obj, event, uid */) {
 
 	//Add the event to the list, prune it a bit if necessary, persist to localStorage if available, and flush the list if it's been awhile.
 	trackedEvents.push(obj);
-	if (trackedEvents.length > 1000) trackedEvents.splice(0, 100);
+	if (trackedEvents.length > config_trackerDropQuota) trackedEvents.splice(0, Math.round(config_trackerDropQuota / 10));
 	if (window.localStorage) window.localStorage["trackedEvents"] = JSON.stringify(trackedEvents);
-	if (trackedEvents.length >= 1) flushTracker();
+	if (trackedEvents.length >= config_trackerFlushQuota) flushTracker();
 
 }
 
@@ -104,10 +105,26 @@ function flushTracker() {
 
 }
 
+function cleanupTimerSuppress() {
+
+	var now = new Date().getTime();
+	for (var i = trackerSuppress.length-1; i >= 0; i--) {
+		if (trackerSuppress[i]["expiry"] < now) {
+			trackerSuppress.splice(i,1);
+		}
+	}
+
+	if (trackerSuppress.length != 0)
+		trackerSuppressTimeout = setTimeout(cleanupTimerSuppress, 1000);
+
+}
+
 function suppressTracking(event, time) {
 
-	trackerSuppress = event;
-	setTimeout(function() { trackerSuppress = null; }, time);
+	trackerSuppress.push({"event":event,"expiry":(new Date().getTime() + time)});
+
+	clearTimeout(trackerSuppressTimeout);
+	trackerSuppressTimeout = setTimeout(cleanupTimerSuppress, 1000);
 
 }
 
@@ -144,7 +161,7 @@ function baseClockUpdate() {
 
 function reset() {
 
-	suppressTracking("scroll", 2000);
+	suppressTracking("scroll", 3000);
 
 	for (var i in pageClasses) {
 		$("body").removeClass(pageClasses[i]);
@@ -158,11 +175,16 @@ function reset() {
 	
 	menuNewsScroller.scrollToPage(0,0,0);
 	menuEventsScroller.scrollToPage(0,0,0);
+	aboutScroller.scrollToPage(0,0,0);
+	roomsScroller.scrollToPage(0,0,0);
+
+	var cw = $("#news_full iframe")[0].contentWindow;
+	if (cw.resetScroll) cw.resetScroll();
 	
 	if ($("body").hasClass("handicap")) toggleHandicap();
 	
 	resetDirectory();
-	currentUID = 0;
+	resetMap();
 
 }
 
@@ -179,7 +201,10 @@ function baseBackButton() {
 		
 	} else {
 	
-		if ($("body").hasClass("page_directory")) resetDirectory();
+		if ($("body").hasClass("page_directory")) {
+			suppressTracking("scroll", 2000);
+			resetDirectory();
+		}
 		
 		$("body").addClass("page1").removeClass("page2");
 		for (var i in pageClasses) {
@@ -194,11 +219,8 @@ function baseBackButton() {
 
 function baseMouseReset() {
 
-	var mouseThreshold = 2 * 60 * 1000; //2 minutes
-	var reloadThreshold = 12 * 60 * 60 * 1000; //12 hours
-
 	//If we haven't reloaded the page in >12 hours, and a user has not recently interacted, reload.
-	if (pageLoadTimestamp>0 && (new Date().getTime() - pageLoadTimestamp > reloadThreshold) && lastMouseEvent<=0) {
+	if (pageLoadTimestamp>0 && (new Date().getTime() - pageLoadTimestamp > config_reloadThreshold) && lastMouseEvent<=0) {
 		
 		pageLoadTimestamp = -1;
 		flushTracker();
@@ -208,7 +230,7 @@ function baseMouseReset() {
 	}
 
 	//If a user has recently interacted, but not in the last 2 minutes, reset to the cover screen.
-	if (lastMouseEvent>0 && (new Date().getTime() - lastMouseEvent > mouseThreshold)) {
+	if (lastMouseEvent>0 && (new Date().getTime() - lastMouseEvent > config_mouseThreshold)) {
 	
 		lastMouseEvent = -1;
 		track("timeout_reset");
@@ -252,6 +274,8 @@ function baseRefreshScrollers() {
 }
 
 function toggleHandicap() {
+
+	suppressTracking("scroll", 2000);
 
 	$("body").toggleClass("handicap");
 	if ($("body").hasClass("handicap")) {

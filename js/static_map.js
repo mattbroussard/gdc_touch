@@ -40,6 +40,15 @@ function mapClick() {
 
 } */
 
+function resetMap() {
+
+	mapCurLoc = baseGetLocation();
+	if (mapCurLoc == "0") mapCurLoc = "3N";
+	suppressTracking("map", 1000);
+	$("#map_floor_chooser_button_"+mapCurLoc.charAt(0)).addClass("on").click();
+
+}
+
 $(function() {
 
 	enableMenuButton("map");
@@ -67,9 +76,7 @@ $(function() {
 	});
 
 	//put us on the right floor to begin with
-	mapCurLoc = baseGetLocation();
-	if (mapCurLoc == "0") mapCurLoc = "3N";
-	$("#map_floor_chooser_button_"+mapCurLoc.charAt(0)).addClass("on").click();
+	resetMap();
 
 	//any clicks not on the map popup close the map popup
 	/* $("body").mousedown(function(e) {

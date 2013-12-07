@@ -26,3 +26,6 @@ php/*
 Icon?
 ehthumbs.db
 Thumbs.db
+.swp
+*.swp
+.swp/
