@@ -23,7 +23,7 @@ function researchInitMenu() {
 			.attr("data-page", obj.page)
 			.appendTo("#research_menu > div");
 		
-		scrollSafeClick(el[0], researchMenuClick);
+		scrollSafeClick(el[0], "#research_menu > div", researchMenuClick);
 	
 	}
 

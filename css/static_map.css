@@ -98,6 +98,25 @@
 
 }
 
+#map_popup:after, #map_popup:before {
+
+	content: ' ';
+	height: 0;
+	position: absolute;
+	width: 0;
+	border: 15px solid transparent;
+	border-top-color: #fff;
+	top: 100%;
+	left: 50px;
+
+}
+
+#map_popup:before {
+	border: 20px solid transparent;
+	left: 45px;
+	border-top-color: #000;
+}
+
 #map_popup_title {
 	font-size: 40pt;
 	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
@@ -126,25 +145,6 @@
 	padding-right: 20px;
 	margin-top: 15px;
 
-}
-
-#map_popup:after, #map_popup:before {
-
-	content: ' ';
-	height: 0;
-	position: absolute;
-	width: 0;
-	border: 15px solid transparent;
-	border-top-color: #fff;
-	top: 100%;
-	left: 50px;
-
-}
-
-#map_popup:before {
-	border: 20px solid transparent;
-	left: 45px;
-	border-top-color: #000;
 }
 
 .handicap #map_container {

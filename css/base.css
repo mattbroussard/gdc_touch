@@ -1,4 +1,5 @@
 
+
 /* font imports moved to fonts.css */
 
 body, html {
@@ -6,6 +7,10 @@ body, html {
 	padding: 0;
 	margin: 0;
 	
+}
+
+body.noanim * {
+	-webkit-transition: none !important;
 }
 
 #global {
@@ -68,9 +73,13 @@ input {
 	background: url(../img/blackbar3.png) no-repeat;
 	*/
 
-	background-color: white;
+	/* slightly less old masthead:
 	background-image: url(../img/dept_masthead_medium.png);
 	background-position: center 5px;
+	*/
+
+	background-color: white;
+	background-image: url(../img/blackbar4.png);
 	background-repeat: no-repeat;
 	height: 85px;
 	
@@ -174,7 +183,7 @@ input {
 	left: 50%;
 	width: 500px;
 	margin-left: -250px;
-	z-index: 2000;
+	z-index: 1998; /* previously 2000, adjusted to fall under debug panel */
 	background: #23458b; /* previously rgb(23,46,94), changed at Dan's request 12052013 */
 	border-radius: 15px;
 	color: white;
@@ -249,3 +258,23 @@ body.page_about.handicap #base_version {
 	font-size: 10px;
 	z-index: 65532;
 }
+
+#base_blackbar_clock {
+
+	position: absolute;
+	top: 0px;
+	right: 5px;
+	height: 85px;
+	width: 265px;
+	line-height: 85px;
+	z-index: 65531;
+	
+	color: #cc5500;
+	font-size: 42pt;
+	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
+	text-transform: uppercase;
+	text-align: right;
+
+}
+
+/* #base_blackbar_clock:before { content: '\2022 '; } */

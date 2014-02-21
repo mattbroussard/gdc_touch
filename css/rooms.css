@@ -44,23 +44,23 @@
 
 }
 
-.room_num {
+.room_group_header {
 	
 	font-size: 26pt;
 	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
 	
 }
 
-.room_event_time, .room_event_title {
+.room_item_header, .room_item_title {
 	display: inline;
 	margin-right: 15px;
 }
 
-.room_event_time {
+.room_item_header {
 	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
 }
 
-.room_item {
+.room_group {
 	margin-bottom: 25px;
 }
 

@@ -49,6 +49,40 @@ function resetMap() {
 
 }
 
+//feature shelved for future consideration
+/* function mapsLinkClick() {
+
+	var room = $(this).text().replace("GDC","").trim();
+	var floor = room.split(".")[0] / 1;
+	if (isNaN(floor) || floor < 1 || floor > 7) return;
+
+	//unfortunately, this whole process of getting from some arbitrary screen to the map is really hacky
+	//essentially:
+	// - disable animations
+	// - trigger the back button
+	// - trigger the menu button for the map
+	// - tell the map to go to the right floor
+	// - re-enable animations
+
+	baseDisableAnimations();
+
+	suppressTracking("menu_button_map", 2000);
+	suppressTracking("menu_return", 2000);
+	suppressTracking("map_choose_floor", 2000);
+
+	if (!$("body").hasClass("page1")) {
+		baseBackButton();
+	}
+
+	$("#menu_map_button").click();
+	$("#map_floor_chooser_button_"+floor).addClass("on").click();
+
+	setTimeout(function() {
+		baseEnableAnimations();
+	}, 2000);
+
+} */
+
 $(function() {
 
 	enableMenuButton("map");
@@ -77,6 +111,9 @@ $(function() {
 
 	//put us on the right floor to begin with
 	resetMap();
+
+	//allow clicks on map links elsewhere in the app to come to the map
+	//$("body").on("click", ".maps_link", mapsLinkClick);
 
 	//any clicks not on the map popup close the map popup
 	/* $("body").mousedown(function(e) {

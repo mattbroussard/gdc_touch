@@ -1,0 +1,102 @@
+
+#debug {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	width: 1080px;
+	height: 1920px;
+	overflow: hidden;
+	z-index: 1999;
+	background: black; /* previously url(../img/bg4.png) no-repeat */
+	text-align: center;
+	color: white;
+	display: none;
+
+}
+
+#debug_title {
+
+	position: absolute;
+	top: 95px; /* old masthead: 70px */
+	left: 20px;
+
+}
+
+#debug_log {
+
+	position: absolute;
+	top: 195px;
+	left: 20px;
+	width: 820px;
+	height: 1700px;
+	background: black;
+
+}
+
+#debug_buttons {
+
+	position: absolute;
+	top: 195px;
+	right: 20px;
+	width: 200px;
+	height: 1700px;
+
+}
+
+#debug_buttons button {
+
+	display: block;
+	margin-bottom: 10px;
+	background: white; /* previously #23458b */
+	color: #23458b; /* previously white */
+	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
+	font-size: 20pt;
+	border: 0;
+	border-radius: 5px;
+	outline: none;
+	width: 100%;
+	height: 3em;
+
+}
+
+span.debug_log_item {
+
+	display: block;
+	border-bottom: 2px solid white;
+	margin-bottom: 10px;
+	font-family: monospace; /* previously: font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif; */
+	text-align: left;
+	font-size: 12pt;
+	font-weight: bold;
+	color: white;
+	word-wrap: break-word;
+	padding: 5px;
+
+}
+
+span.debug_log_time {
+
+	display: inline-block;
+	width: 100px;
+	float: right;
+	clear: both;
+	height: 100%;
+	font-style: italic;
+	font-size: 7pt;
+	color: white !important;
+
+
+}
+
+#debug_ros_indicator {
+
+	color: red;
+	font-size: 150px;
+	position: absolute;
+	bottom: 20px;
+	right: 35px;
+
+}

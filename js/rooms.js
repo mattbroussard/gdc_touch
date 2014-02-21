@@ -1,28 +1,92 @@
 
 var roomsScroller = null;
 
-function roomsContentLoaded(data, textStatus, jqXHR) {
-
-	if (data.error || data.length==0) return;
-	$("#rooms_content > div .data_error").remove();
+function roomsDisplayByRoom(data, textStatus, jqXHR) {
 	
 	for (var r in data) {
 	
 		var room = data[r];
-		var div = $("<div>").addClass("room_item").appendTo("#rooms_content > div");
+		var div = $("<div>").addClass("room_group").appendTo("#rooms_content > div");
 		
-		$("<div>").addClass("room_num").text(room.room).appendTo(div);
+		$("<div>").addClass("room_group_header").addClass("maps_link").text(room.room).appendTo(div);
 		
 		for (var e in room.events) {
 			var event = room.events[e];
-			var ev = $("<div>").addClass("room_event").appendTo(div);
-			$("<div>").addClass("room_event_time").appendTo(ev).text(event.time);
-			$("<div>").addClass("room_event_title").appendTo(ev).text(event.title);
+			var ev = $("<div>").addClass("room_item").appendTo(div);
+			$("<div>").addClass("room_item_header").appendTo(ev).text(event.time);
+			$("<div>").addClass("room_item_title").appendTo(ev).text(event.title);
 		}
 	
 	}
 	
 	setTimeout(function() { roomsScroller.refresh(); }, 0);
+
+}
+
+function roomsTimeParse(time) {
+
+	var hours = time.split(":")[0].trim()/1;
+	if (time.toLowerCase().indexOf("pm")>=0 && hours < 12) hours += 12;
+	var minutes = time.split(":")[1].substring(0,2)/1;
+	return hours * 60 + minutes;
+
+}
+
+function roomsDisplayByTime(data) {
+
+	var times = {};
+
+	for (var r in data) {
+
+		for (var e in data[r].events) {
+
+			var event = data[r].events[e];
+			if (!(event.time in times)) times[event.time] = [];
+			times[event.time].push({"room" : data[r].room, "title" : event.title});
+
+		}
+
+	}
+
+	var groups = [];
+	for (var t in times)
+		groups.push({ "time" : t, "events" : times[t] });
+
+	groups.sort(function(a,b) {
+		return roomsTimeParse(a.time) - roomsTimeParse(b.time);
+	});
+
+	for (var g in groups) {
+
+		var group = groups[g];
+		var time = group.time;
+		var events = group.events;
+
+		var $group = $("<div>").addClass("room_group").appendTo("#rooms_content > div");
+		$("<div>").addClass("room_group_header").text(group.time).appendTo($group);
+
+		for (var e in events) {
+			var event = events[e];
+			var $event = $("<div>").addClass("room_item").appendTo($group);
+			$("<div>").addClass("room_item_header").addClass("maps_link").appendTo($event).text(event.room);
+			$("<div>").addClass("room_item_title").appendTo($event).text(event.title);
+		}
+
+	}
+
+	setTimeout(function() { roomsScroller.refresh(); }, 0);
+
+}
+
+function roomsContentLoaded(data, textStatus, jqXHR) {
+
+	if (data.error || data.length==0) return;
+	$("#rooms_content > div .data_error").remove();
+
+	if (config_roomsSort == "time")
+		roomsDisplayByTime(data);
+	else
+		roomsDisplayByRoom(data);
 
 }
 

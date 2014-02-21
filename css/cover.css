@@ -27,24 +27,6 @@
 
 }
 
-#cover_clock { /* not currently using */
-
-	position: absolute;
-	top: 60px;
-	left: 20px;
-	z-index: 999;
-	
-	color: white;
-	font-size: 42pt;
-	letter-spacing: 1.1px;
-	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
-	text-transform: uppercase;
-	text-shadow: #333 3px 3px 3px;
-
-	display: none !important;
-
-}
-
 #cover_diag {
 
 	z-index: 1000;

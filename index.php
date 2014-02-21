@@ -1,5 +1,6 @@
 <?php
-	$modules = array("base", "cover", "menu", "about", "directory", "rooms", "static_map" /*,"bwi","research"*/);
+	/* note: debug, if included, MUST be last */
+	$modules = array("base", "cover", "menu", "about", "directory", "rooms", "static_map", "bwi", /*"research",*/ "debug");
 	$t = time();
 ?><!DOCTYPE html>
 <html>
@@ -10,9 +11,10 @@
 	<!-- global CSS/JS includes -->
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/fonts.css" />
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/iscroll.js"></script>
-	<script type="text/javascript" src="js/myros.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.js"></script>
+	<script type="text/javascript" src="js/lib/iscroll.js"></script>
+	<script type="text/javascript" src="js/lib/eventemitter2.js"></script>
+	<script type="text/javascript" src="js/lib/roslib.min.js"></script>
 	<script type="text/javascript" src="js/config.js?cachebuster=<?php echo $t; ?>"></script>
 <?php foreach ($modules as $i) { ?>
 	<!-- CSS/JS includes for module <?php echo $i; ?> -->
@@ -38,4 +40,4 @@
 </div>
 </body>
 </html>
-<!-- authored by Matt Broussard in March-November 2013 -->
+<!-- authored by Matt Broussard beginning March 2013, continuing as of January 2014 -->

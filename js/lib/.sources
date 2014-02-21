@@ -1,0 +1,6 @@
+not all are up to date as distributed here, but here's where you can find them.
+
+iscroll: https://raw.github.com/cubiq/iscroll/master/build/iscroll.js
+jquery: http://code.jquery.com/jquery-1.9.1.min.js
+roslibjs: https://raw.github.com/RobotWebTools/roslibjs/devel/build/roslib.min.js
+eventemitter2: https://raw.github.com/RobotWebTools/roslibjs/devel/include/EventEmitter2/eventemitter2.js

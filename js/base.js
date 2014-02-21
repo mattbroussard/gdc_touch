@@ -14,6 +14,16 @@ var trackerSuppress = [];
 var trackerSuppressTimeout = null;
 var trackerFlushInflight = null;
 
+function log(/* x, color */) {
+
+	var x = arguments[0];
+	var c = arguments.length>1?arguments[1]:"white";
+	if (window.console) console.log(x);
+	if (typeof(x)=="object") x = JSON.stringify(x);
+	if (window.debugLog) debugLog(x, c);
+
+}
+
 //avoid UI performance problems related to track() taking awhile
 function track(/* obj, event, uid */) {
 	var that = this;
@@ -64,7 +74,7 @@ function doTrack(/* obj, event, uid */) {
 	}
 
 	//For debugging, also print the event object to the console.
-	if (console) console.log(obj);
+	log(obj);
 
 	//Add the event to the list, prune it a bit if necessary, persist to localStorage if available, and flush the list if it's been awhile.
 	trackedEvents.push(obj);
@@ -76,22 +86,32 @@ function doTrack(/* obj, event, uid */) {
 
 function flushTracker() {
 
+	//If the BWI module is included, and we are connected, send events there instead.
+	if (window.bwiConnected && bwiConnected()) {
+
+		bwiSendMessage("tracker", trackedEvents);
+		trackedEvents = [];
+		if (window.localStorage) window.localStorage["trackerEvents"] = "[]";
+		return;
+
+	}
+
 	if (trackerFlushInflight != null || config_trackerEndpoint == null) return;
 	trackerFlushInflight = trackedEvents;
 	trackedEvents = [];
 	if (window.localStorage) window.localStorage["trackerEvents"] = "[]";
 
-	console.log("trackerFlush sending " + trackerFlushInflight.length + " events to endpoint " + config_trackerEndpoint);
+	log("trackerFlush sending " + trackerFlushInflight.length + " events to endpoint " + config_trackerEndpoint, "cyan");
 
 	var ret = function(data) {
 		if (data=="Success") {
 			trackerFlushInflight = null;
-			if (console) console.log("trackerFlush XHR success");
+			log("trackerFlush XHR success", "green");
 		} else {
 			trackedEvents = trackerFlushInflight;
 			if (window.localStorage) window.localStorage["trackedEvents"] = JSON.stringify(trackedEvents);
 			trackerFlushInflight = null;
-			if (console) console.log("trackerFlush XHR failure");
+			log("trackerFlush XHR failure", "red");
 		}
 	};
 
@@ -105,7 +125,7 @@ function flushTracker() {
 
 }
 
-function cleanupTimerSuppress() {
+function cleanupTrackerSuppress() {
 
 	var now = new Date().getTime();
 	for (var i = trackerSuppress.length-1; i >= 0; i--) {
@@ -115,7 +135,7 @@ function cleanupTimerSuppress() {
 	}
 
 	if (trackerSuppress.length != 0)
-		trackerSuppressTimeout = setTimeout(cleanupTimerSuppress, 1000);
+		trackerSuppressTimeout = setTimeout(cleanupTrackerSuppress, 1000);
 
 }
 
@@ -124,14 +144,19 @@ function suppressTracking(event, time) {
 	trackerSuppress.push({"event":event,"expiry":(new Date().getTime() + time)});
 
 	clearTimeout(trackerSuppressTimeout);
-	trackerSuppressTimeout = setTimeout(cleanupTimerSuppress, 1000);
+	trackerSuppressTimeout = setTimeout(cleanupTrackerSuppress, 1000);
 
 }
 
 function baseGetLocation() {
 
-	var loc = window.location.href.split("?location=");
-	return loc.length >= 2 ? loc[1] : "0"; //NOTE: do not modify this line! Specify the location using a GET parameter such as ?location=3N
+	//NOTE: do not modify this function! Specify the location using a GET parameter such as ?location=3N
+
+	var l1 = window.location.href.indexOf("location=");
+	var l2 = window.location.href.indexOf("&", l1);
+	if (l1 < 0) return "0";
+	if (l2 < 0) return window.location.href.substring(l1 + 9);
+	return window.location.href.substring(l1 + 9, l2);
 
 }
 
@@ -140,6 +165,15 @@ function baseGetFloorNumber() {
 	return baseGetLocation().replace(/[^0-9\-]/g, "") / 1; //added a hyphen in the regex because Ryan wanted to see it say -1
 
 }
+
+/* function fakeDate() { //generate random fake dates for testing the design of the clock
+
+	var d = new Date();
+	d.setHours(Math.round(Math.random()*23));
+	d.setMinutes(Math.round(Math.random()*59));
+	return d;
+
+} */
 
 function baseClockUpdate() {
 	
@@ -150,18 +184,20 @@ function baseClockUpdate() {
 	if (minutes<10) minutes = "0"+minutes;
 	var ampm = date.getHours()>=12 ? "PM" : "AM";
 	
-	var text = dayNames[date.getDay()]+", "+monthNames[date.getMonth()]+" "+date.getDate()+"<br/>"; //, "+date.getFullYear()+"<br/>";
+	var text = dayNames[date.getDay()]+", "+monthNames[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear();
 	var shortText = hours+":"+minutes+" "+ampm;
-	text += shortText;
+	//text += "<br/>" + shortText;
 	
-	$("#cover_clock").html(text);
-	$("#base_clock").html(text.replace("<br/>", " &bull; ")); //previously shortText
+	$("#base_blackbar_clock").html(shortText);
+	$("#base_clock").html(text/*.replace("<br/>", " &bull; ")*/);
 
 }
 
 function reset() {
 
+	lastMouseEvent = -1;
 	suppressTracking("scroll", 3000);
+	suppressTracking("handicap", 3000);
 
 	for (var i in pageClasses) {
 		$("body").removeClass(pageClasses[i]);
@@ -172,6 +208,8 @@ function reset() {
 		.removeClass("page1")
 		.removeClass("page2")
 		.addClass("page0");
+
+	$("#debug").hide();
 	
 	menuNewsScroller.scrollToPage(0,0,0);
 	menuEventsScroller.scrollToPage(0,0,0);
@@ -257,7 +295,8 @@ function baseRefreshScrollers() {
 			"roomsScroller",
 			"aboutScroller",
 			"mapScroller",
-			"researchMenuScroller"
+			"researchMenuScroller",
+			"bwiScroller"
 		];
 		
 		for (var i in scrollers) {
@@ -286,6 +325,16 @@ function toggleHandicap() {
 	}
 	baseRefreshScrollers();
 
+}
+
+function baseDisableAnimations() {
+	$("body").addClass("noanim");
+	$("body")[0].offsetHeight; //hack: trigger CSS reflow, see http://stackoverflow.com/questions/11131875
+}
+
+function baseEnableAnimations() {
+	$("body").removeClass("noanim");
+	$("body")[0].offsetHeight; //hack: trigger CSS reflow, see http://stackoverflow.com/questions/11131875
 }
 
 $(function() {
@@ -326,13 +375,20 @@ $(function() {
 		if (e.keyCode == 9) e.preventDefault();
 	});
 	
-	//For debug purposes, allow page to be manually refreshed by clicking the masthead while in handicap mode on the About page.
+	//Allow access to a hidden debug page, which shows logging information and allows manual page reloads.
 	$("#base_blackbar").click(function() {
-		if ($("body").is(".handicap.page_about")) {
-			flushTracker();
-			setTimeout(function() { window.location.reload(); }, 1000);
+		if ($("body").is(".handicap.page_about") && !$("#debug").is(":visible")) {
+			if (window.enterDebug) enterDebug();
+			else { //old behavior before debug page was to just reload the page.
+				flushTracker();
+				setTimeout(function() { window.location.reload(); }, 1000);
+			}
 		}
 	});
+	if (window.location.href.indexOf("debug=true")>=0 && window.enterDebug) {
+		enterDebug();
+		clearInterval(baseResetInterval);
+	}
 
 	pageLoadTimestamp = new Date().getTime();
 

@@ -6,25 +6,25 @@
    This makes it easy to swap out fonts.
    Backup alternative fonts are specified with an appended '2', in case the primary preferred font is not available. */
 
-/* references using Gotham (Dan: put font files at specified urls, or change urls here; for the moment these will fail and use the Helvetica urls) */
+/* references using Gotham (Dan: put font files at specified urls, or change urls here; without doing so, these will fail and use the Helvetica urls) */
 
 @font-face {
 	font-family: 'gdc_touch_thin';
-	src: url('fonts/Gotham-Light.ttf'); /* changed to Gotham Light at Dan's request, 12052013 */
+	src: url('fonts/Gotham-Light.otf'); /* changed to Gotham Light at Dan's request, 12052013 */
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'gdc_touch_bold';
-	src: url('fonts/Gotham-Bold.ttf');
+	src: url('fonts/Gotham-Bold.otf');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'gdc_touch_book';
-	src: url('fonts/Gotham-Book.ttf');
+	src: url('fonts/Gotham-Book.otf');
 	font-weight: normal;
 	font-style: normal;
 }
