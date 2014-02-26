@@ -87,14 +87,15 @@ function doTrack(/* obj, event, uid */) {
 function flushTracker() {
 
 	//If the BWI module is included, and we are connected, send events there instead.
-	if (window.bwiConnected && bwiConnected()) {
+	//Disabled until server-side implementation finished
+	/* if (window.bwiConnected && bwiConnected()) {
 
 		bwiSendMessage("tracker", trackedEvents);
 		trackedEvents = [];
 		if (window.localStorage) window.localStorage["trackerEvents"] = "[]";
 		return;
 
-	}
+	} */
 
 	if (trackerFlushInflight != null || config_trackerEndpoint == null) return;
 	trackerFlushInflight = trackedEvents;
