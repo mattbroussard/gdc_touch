@@ -27,7 +27,7 @@ function rosInit() {
 	
 	rosSubTopic = new ROSLIB.Topic({
 		"ros" : rosConn,
-		"name" : "/gdc_touch_server",
+		"name" : "/gdc_touch_server_"+baseGetLocation(),
 		"messageType" : "std_msgs/String"
 	});
 	rosSubTopic.subscribe(rosMessageReceived);
