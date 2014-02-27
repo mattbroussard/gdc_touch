@@ -213,7 +213,7 @@ function bwiResend() {
 			continue;
 		}
 
-		if ((now - that.timestamp)/1000 > bwiMessagingConfig["retry_delay"]) {
+		if ((now - bwiSent[i]["timestamp"])/1000 > bwiMessagingConfig["retry_delay"]) {
 			bwiSent[i]["timestamp"] = now;
 			bwiSent[i]["attempts"]++;
 			rosSendMessage(bwiSent[i]["msg"]);
@@ -306,9 +306,16 @@ $(function() {
 		}
 	}, 5 * 60 * 1000);
 
+	bwiResendTimeout = setTimeout(bwiResend, bwiMessagingConfig["retry_delay"]*1000);
+
 	bwiRegisterCallback("", function(payload) {
-		if (payload.connected) bwiSendMessage("hello", null);
-		else disableMenuButton("bwi");
+		if (payload.connected) {
+			setTimeout(function() {
+				bwiSendMessage("hello", null);
+			}, 2000);
+		} else {
+			disableMenuButton("bwi");
+		}
 	});
 
 	bwiRegisterCallback("demo_status", bwiDemoStatusUpdateReceived);
