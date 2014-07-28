@@ -25,10 +25,10 @@
 
 	z-index: 21;
 	position: absolute;
-	top: 195px; /* old masthead: 170px */
+	top: 265px; /* old masthead: 170px; moved 70px down for toggle */
 	left: 20px;
 	width: 1040px;
-	height: 1605px; /* old masthead: 1630px */
+	height: 1535px; /* old masthead: 1630px */
 	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)), color-stop(0.9,rgba(0,0,0,1)));
 	
 	font-family: 'gdc_touch_thin', 'gdc_touch_thin2', sans-serif;
@@ -64,12 +64,41 @@
 	margin-bottom: 25px;
 }
 
+#rooms_toggle {
+	position: absolute;
+	top: 195px;
+	left: 50%;
+	margin-left: -235px;
+	height: 60px;
+}
+
+#rooms_toggle > button {
+	width: 470px;
+	height: 100%;
+	background-color: #23458b;
+	border: 0px none;
+	outline: 0px none;
+	padding: 10px;
+	text-align: center;
+	border-radius: 10px;
+	color: white;
+	font-size: 30px;
+	line-height: 100%;
+	font-family: 'gdc_touch_book', 'gdc_touch_book2', sans-serif;
+}
+
 .handicap #rooms_title { top: 1080px; }
 
 .handicap #rooms_content {
 
+	top: 1245px;
+	height: 555px;
+
+}
+
+.handicap #rooms_toggle {
+
 	top: 1180px;
-	height: 620px;
 
 }
 

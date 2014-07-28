@@ -1,12 +1,14 @@
 
 var roomsScroller = null;
+var roomsDivRoom = null;
+var roomsDivTime = null;
 
-function roomsDisplayByRoom(data, textStatus, jqXHR) {
+function roomsDisplayByRoom(data, dom) {
 	
 	for (var r in data) {
 	
 		var room = data[r];
-		var div = $("<div>").addClass("room_group").appendTo("#rooms_content > div");
+		var div = $("<div>").addClass("room_group").appendTo(dom);
 		
 		$("<div>").addClass("room_group_header").addClass("maps_link").text(room.room).appendTo(div);
 		
@@ -32,7 +34,7 @@ function roomsTimeParse(time) {
 
 }
 
-function roomsDisplayByTime(data) {
+function roomsDisplayByTime(data, dom) {
 
 	var times = {};
 
@@ -62,7 +64,7 @@ function roomsDisplayByTime(data) {
 		var time = group.time;
 		var events = group.events;
 
-		var $group = $("<div>").addClass("room_group").appendTo("#rooms_content > div");
+		var $group = $("<div>").addClass("room_group").appendTo(dom);
 		$("<div>").addClass("room_group_header").text(group.time).appendTo($group);
 
 		for (var e in events) {
@@ -78,15 +80,43 @@ function roomsDisplayByTime(data) {
 
 }
 
+function roomsSetDisplayMode(mode) {
+	if (mode != "room" && mode != "time") mode = "time";
+	
+	var other = {"room":"time", "time":"room"};
+	var divs = {"room":roomsDivRoom, "time":roomsDivTime};
+
+	$(divs[other[mode]]).hide();
+	$(divs[mode]).show();
+	
+	$("#rooms_toggle_"+mode).hide();
+	$("#rooms_toggle_"+other[mode]).show();
+	$("#rooms_toggle").show();
+
+	setTimeout(function() { roomsScroller.refresh(); }, 0);
+
+}
+
+function roomsToggleDisplayMode() {
+
+	var current = $(roomsDivRoom).is(":visible") ? "room" : "time";
+	var other = {"room":"time", "time":"room"};
+
+	roomsSetDisplayMode(other[current]);
+
+}
+
 function roomsContentLoaded(data, textStatus, jqXHR) {
 
 	if (data.error || data.length==0) return;
 	$("#rooms_content > div .data_error").remove();
 
-	if (config_roomsSort == "time")
-		roomsDisplayByTime(data);
-	else
-		roomsDisplayByRoom(data);
+	roomsDivRoom = $("<div>").appendTo("#rooms_content > div").hide();
+	roomsDisplayByRoom(data, roomsDivRoom);
+	roomsDivTime = $("<div>").appendTo("#rooms_content > div").hide();
+	roomsDisplayByTime(data, roomsDivTime);
+
+	roomsSetDisplayMode(config_roomsSortDefault);
 
 }
 
@@ -94,6 +124,7 @@ $(function() {
 
 	enableMenuButton("rooms");
 	
+	$("#rooms_toggle button").click(roomsToggleDisplayMode);
 	roomsScroller = new iScroll("rooms_content", { hScrollbar : false, vScrollbar : false, wheelAction : "none", onScrollEnd:function(e){track("rooms_scroll",e);} });
 	$.getJSON(config_dataSources["rooms"], roomsContentLoaded);
 

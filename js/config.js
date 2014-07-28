@@ -8,7 +8,7 @@ var config_trackerDropQuota = 1000; //number of events after which the tracker w
 var config_mouseThreshold = 2 * 60 * 1000; //timeout in milliseconds to return to the cover screen after no activity
 var config_reloadThreshold = 6 * 60 * 60 * 1000; //timeout in milliseconds to reload the page
 
-var config_roomsSort = "time"; //can be "room" or "time"
+var config_roomsSortDefault = "time"; //can be "room" or "time"
 
 //Note: setting news_slideshow to null removes the news slideshow and expands the size of the news story scroll view.
 var config_dataSources = {
