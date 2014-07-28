@@ -6,7 +6,6 @@ var rosSubTopic = null;
 var rosPubTopic = null;
 
 var bwiCallbacks = [];
-var bwiNextID = 0;
 var bwiSent = {};
 var bwiReceived = [];
 var bwiResendTimeout = null;
@@ -174,14 +173,22 @@ function bwiRegisterCallback(call, callback) {
 
 }
 
+function bwiNextID() {
+
+	//previously, we just incremented a counter. But this causes problems with messages being ignored on the server if the page is reloaded quickly
+	return new Date().getTime() + "_" + baseGetLocation();
+
+}
+
 function bwiSendMessage(call, payload) {
 
-	bwiNextID++;
+	var id = bwiNextID();
+
 	var obj = {
 		"meta" : {
 			"dest" : "server",
 			"src" : baseGetLocation(),
-			"id" : bwiNextID
+			"id" : id
 		},
 		"call" : call,
 		"payload" : payload
@@ -193,7 +200,7 @@ function bwiSendMessage(call, payload) {
 		"msg" : obj
 	};
 
-	bwiSent[bwiNextID] = sent;
+	bwiSent[id] = sent;
 
 	log("BWI message sent, call="+call+", payload="+JSON.stringify(payload), "yellow");
 	rosSendMessage(obj);
@@ -281,7 +288,7 @@ $(function() {
 
 	//keep this screen disabled by default, we'll have the server turn it on
 	//enableMenuButton("bwi");
-	
+
 	$("#bwi_message_screen button").click(function() {
 		$("#bwi_message_screen").hide();
 	});
