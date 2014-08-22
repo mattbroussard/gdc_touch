@@ -225,6 +225,8 @@ function reset() {
 	resetDirectory();
 	resetMap();
 
+	cover2_reset && cover2_reset();
+
 }
 
 function baseBackButton() {

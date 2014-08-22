@@ -27,6 +27,11 @@ function roomsDisplayByRoom(data, dom) {
 
 function roomsTimeParse(time) {
 
+	// special case for "All day"
+	if (time.toLowerCase().indexOf("all day") >= 0) {
+		return -1;
+	}
+
 	var hours = time.split(":")[0].trim()/1;
 	if (time.toLowerCase().indexOf("pm")>=0 && hours < 12) hours += 12;
 	var minutes = time.split(":")[1].substring(0,2)/1;
@@ -64,7 +69,7 @@ function roomsDisplayByTime(data, dom) {
 		var time = group.time;
 		var events = group.events;
 
-		var $group = $("<div>").addClass("room_group").appendTo(dom);
+		var $group = $("<div>").addClass("room_group").attr("data-time", roomsTimeParse(group.time)).appendTo(dom);
 		$("<div>").addClass("room_group_header").text(group.time).appendTo($group);
 
 		for (var e in events) {
@@ -117,6 +122,9 @@ function roomsContentLoaded(data, textStatus, jqXHR) {
 	roomsDisplayByTime(data, roomsDivTime);
 
 	roomsSetDisplayMode(config_roomsSortDefault);
+
+	// if cover2 is in use, notify it that the rooms data has been loaded.
+	cover2_roomsAvailable && cover2_roomsAvailable();
 
 }
 

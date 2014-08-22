@@ -1,6 +1,7 @@
 <?php
 	/* note: debug, if included, MUST be last */
-	$modules = array("base", "cover", "menu", "about", "directory", "rooms", "static_map", "bwi", /*"research",*/ "debug");
+	/* note: only one of cover and cover2 may be included */
+	$modules = array("base", /*"cover",*/ "cover2", "menu", "about", "directory", "rooms", "static_map", "bwi", /*"research",*/ "debug");
 	$t = time();
 ?><!DOCTYPE html>
 <html>
@@ -40,4 +41,4 @@
 </div>
 </body>
 </html>
-<!-- authored by Matt Broussard beginning March 2013, continuing as of January 2014 -->
+<!-- authored by Matt Broussard beginning March 2013, continuing as of July 2014 -->
