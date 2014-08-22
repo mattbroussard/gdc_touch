@@ -11,6 +11,8 @@ var cover2_roomsScroller = null;
 // called when the rooms module has rendered its content, so we can copy it.
 function cover2_roomsAvailable() {
 
+	suppressTracking("cover2_rooms", 1000);
+
 	$("#cover_rooms > div > .data_error").remove();
 	cover2_roomsDivRoom = $(roomsDivRoom).clone().appendTo("#cover_rooms > div");
 	cover2_roomsDivTime = $(roomsDivTime).clone().appendTo("#cover_rooms > div");
@@ -61,6 +63,7 @@ function cover2_setRoomsView(mode) {
 	}
 
 	setTimeout(function() { cover2_roomsScroller.refresh(); }, 0);
+	track({"event":"cover2_rooms_filter","filter":mode});
 
 }
 
@@ -68,6 +71,7 @@ function cover2_exit(event) {
 
 	menuSlideshowReset();
 	
+	track("cover2_open", event, new Date().getTime());
 	track("cover_open", event, new Date().getTime());
 
 	$("body")
@@ -104,9 +108,13 @@ function cover2_mapClick() {
 	$("#cover_map img").hide();
 	$("#cover2_map_image_"+cover2_mapCurLoc).show();
 
+	track({"event":"cover2_map_choose_floor","floor":cover2_mapCurLoc});
+
 }
 
 $(function() {
+
+	suppressTracking("cover2", 1000);
 
 	$("#cover_exit").click(cover2_exit);
 	$("#cover_map_switch button").click(cover2_mapClick);

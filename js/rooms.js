@@ -99,6 +99,7 @@ function roomsSetDisplayMode(mode) {
 	$("#rooms_toggle").show();
 
 	setTimeout(function() { roomsScroller.refresh(); }, 0);
+	track({"event":"rooms_filter","filter":mode});
 
 }
 
@@ -115,6 +116,8 @@ function roomsContentLoaded(data, textStatus, jqXHR) {
 
 	if (data.error || data.length==0) return;
 	$("#rooms_content > div .data_error").remove();
+	
+	suppressTracking("rooms", 2000);
 
 	roomsDivRoom = $("<div>").appendTo("#rooms_content > div").hide();
 	roomsDisplayByRoom(data, roomsDivRoom);
