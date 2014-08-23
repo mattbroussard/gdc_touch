@@ -7,6 +7,7 @@ var cover2_roomsDivRoom = null;
 var cover2_roomsDivTime = null;
 var cover2_mapCurLoc = "3N";
 var cover2_roomsScroller = null;
+var cover2_roomsCurrentUpdateInterval = null;
 
 // called when the rooms module has rendered its content, so we can copy it.
 function cover2_roomsAvailable() {
@@ -137,6 +138,13 @@ $(function() {
 	}
 
 	cover2_resetMap();
-	// rooms view will be set when data is available
+	//rooms view will be set when data is available
+
+	//make sure the current tab is always...current
+	cover2_roomsCurrentUpdateInterval = setInterval(function() {
+		if ($("#cover_rooms_switch_current").is(".on")) {
+			cover2_setRoomsView("current");
+		}
+	}, 5 * 60 * 1000);
 
 });
