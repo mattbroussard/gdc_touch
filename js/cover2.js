@@ -55,7 +55,7 @@ function cover2_setRoomsView(mode) {
 
 			var diff = now - time;
 			// don't show events more than 60 minutes in the past or 35 minutes in the future
-			if (diff > 60 || diff < -35) $(this).hide();
+			if (diff > 60 || diff < -70) $(this).hide();
 			else $(this).show();
 			// special case "all day" events
 			if (time < 0) $(this).show();
