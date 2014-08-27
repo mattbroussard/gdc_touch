@@ -16,13 +16,17 @@ function roomsDisplayByRoom(data, dom) {
 			var event = room.events[e];
 			var ev = $("<div>").addClass("room_item").appendTo(div);
 			$("<div>").addClass("room_item_header").appendTo(ev).text(event.time);
-			$("<div>").addClass("room_item_title").appendTo(ev).text(event.title);
+			$("<div>").addClass("room_item_title").appendTo(ev).text(roomsTitleFilter(event.title));
 		}
 	
 	}
 	
 	setTimeout(function() { roomsScroller.refresh(); }, 0);
 
+}
+
+function roomsTitleFilter(title) {
+	return title.replace("Registrar - ", "");
 }
 
 function roomsTimeParse(time) {
@@ -49,7 +53,7 @@ function roomsDisplayByTime(data, dom) {
 
 			var event = data[r].events[e];
 			if (!(event.time in times)) times[event.time] = [];
-			times[event.time].push({"room" : data[r].room, "title" : event.title});
+			times[event.time].push({"room" : data[r].room, "title" : roomsTitleFilter(event.title)});
 
 		}
 
