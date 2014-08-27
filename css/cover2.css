@@ -169,7 +169,7 @@
 #cover_map_switch {
 
 	position: absolute;
-	top: 1080px;
+	top: 1180px; /* previously 1080px */
 	left: 965px;
 	width: 75px;
 	box-shadow: 0 0 35px #333;
